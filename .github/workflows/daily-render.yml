@@ -19,14 +19,14 @@
     pages: write
     id-token: write
 
-  environment:
-    name: github-pages
-    url: ${{ steps.deployment.outputs.page_url }}
-
   jobs:
     render:
       runs-on: ubuntu-latest
       timeout-minutes: 90
+
+      environment:
+          name: github-pages
+          url: ${{ steps.deployment.outputs.page_url }}
       
       env:
         RESET_SCENE_PROVIDER: openai_compat
