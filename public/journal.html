@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#11152b" />
+  <meta name="description" content="RESET journal — a record of rendered elsewheres." />
+  <title>RESET Journal</title>
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="./icons/reset-icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body class="journal-body">
+  <main id="app" class="app journal-app" data-state="scene">
+    <div class="atmosphere" aria-hidden="true">
+      <div class="atmosphere__base"></div>
+      <div class="atmosphere__glow"></div>
+      <canvas id="dockCanvas" class="atmosphere__dock"></canvas>
+      <div class="atmosphere__veil"></div>
+      <div class="atmosphere__grain"></div>
+    </div>
+
+    <div class="topbar journal-topbar">
+      <a class="brand brand--link" href="./" aria-label="Back to RESET">
+        <span class="brand__name">RESET</span>
+        <span class="brand__meaning">Journal</span>
+      </a>
+      <nav class="utility-nav" aria-label="RESET utilities">
+        <a class="utility-link" href="./">Return</a>
+        <a class="utility-link utility-link--hail" href="https://github.com/cAPRIcaT3/RESET/actions/workflows/daily-render.yml" target="_blank" rel="noreferrer" title="Open the GitHub Actions workflow">Hail a RESET</a>
+      </nav>
+    </div>
+
+    <section class="journal-shell" aria-labelledby="journalTitle">
+      <header class="journal-intro">
+        <p class="journal-kicker">Rendered elsewhere, remembered here.</p>
+        <h1 id="journalTitle">RESET Journal</h1>
+        <p id="journalSummary" class="journal-summary">Loading the record…</p>
+      </header>
+      <div id="journalEntries" class="journal-entries" aria-live="polite"></div>
+      <p id="journalEmpty" class="journal-empty" hidden>No RESETs have been journaled yet.</p>
+    </section>
+  </main>
+
+  <noscript>RESET Journal needs JavaScript enabled.</noscript>
+  <script type="module" src="./journal.js"></script>
+</body>
+</html>

@@ -1,9 +1,11 @@
-const SHELL_CACHE = 'reset-shell-v5-daily';
-const MEDIA_CACHE = 'reset-media-v1';
+const SHELL_CACHE = 'reset-shell-v6-journal';
+const MEDIA_CACHE = 'reset-media-v2';
 const scopeUrl = path => new URL(path, self.registration.scope).toString();
 const SHELL = [
   './',
   './index.html',
+  './journal.html',
+  './journal.js',
   './styles.css',
   './app.js',
   './dailyPack.js',
@@ -35,7 +37,7 @@ self.addEventListener('fetch', event => {
 
   if (url.pathname.includes('/api/')) return;
 
-  if (url.pathname.endsWith('/generated/latest.json')) {
+  if (url.pathname.endsWith('/generated/latest.json') || url.pathname.endsWith('/generated/journal.json')) {
     event.respondWith(networkFirst(request, MEDIA_CACHE));
     return;
   }

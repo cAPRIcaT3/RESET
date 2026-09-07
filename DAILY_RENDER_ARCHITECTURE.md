@@ -1,27 +1,39 @@
-# Daily render architecture notes
+# RESET daily render architecture — v0.6
 
-The runtime goal is zero model latency for the user.
+## Invariant
 
-The GitHub runner is a compiler, not a server. Gemma and Kokoro exist only during the scheduled build. The deployed PWA consumes immutable finished scene/audio entries from a daily manifest.
+**One date has exactly three canonical RESET rows.**
 
-## Why the model returns exact timestamps
+`data/reset_journal.parquet` is authoritative. Normal scheduled/manual runs check it before loading Gemma. If the date already has three rows, generation is skipped.
 
-The dock is continuous rather than preset-based, so every accepted scene needs exact visual time metadata. A broad software-selected envelope prevents Gemma from collapsing toward dusk/night while still letting Gemma choose the precise minute that matches its prose.
+## Render path
 
-## Why audio is pre-rendered
+```text
+Parquet journal
+   ↓ export last 60 days
+novelty history
+   ↓
+3 distinct time envelopes + world capsules + creative pressures
+   ↓
+Gemma 3 4B
+   ↓
+{ scene, sceneTime: HH:MM, voice }
+   ↓ validation / duplicate rejection
+Kokoro af_nicole / am_michael
+   ↓
+3 audio files + manifest
+   ↓
+Parquet upsert for date
+   ↓
+JSON journal/history views
+   ↓
+GitHub Pages artifact
+```
 
-Kokoro synthesis no longer sits on the click path. The user's first gesture only needs to unlock Web Audio; the actual audio bytes are already static assets and can be cached by the service worker.
+## Timestamp ownership
 
-## Why daily audio is deployed, not committed
+Software selects a broad time envelope to keep the daily set visually varied. Gemma chooses the exact `HH:MM` inside that envelope. The exact minute is validated and passed directly to the dock renderer.
 
-Audio is large and changes daily. Committing it would permanently inflate Git history. GitHub Pages deployment artifacts can carry today's media without turning the source repository into an audio archive. Only `data/history.json` is committed each day.
+## Journal
 
-## Why fixture scenes remain
-
-They now serve three roles:
-
-1. development fallback;
-2. editorial few-shot examples for Gemma;
-3. regression references for style/quality.
-
-They should not grow into a template library.
+The Parquet journal keeps text and generation metadata forever. Historical audio is deliberately not retained in Git; only the current Pages deployment needs audio.

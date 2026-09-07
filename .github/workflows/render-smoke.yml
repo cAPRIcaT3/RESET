@@ -16,11 +16,11 @@ jobs:
       RESET_MODEL_NAME: gemma3:4b
       RESET_MODEL_API_KEY: ollama
       RESET_MODEL_TIMEOUT_MS: '180000'
-      RESET_DAILY_COUNT: '1'
+      RESET_DAILY_MODE: smoke
       RESET_DAILY_MAX_ATTEMPTS: '12'
       RESET_AUDIO_FORMAT: wav
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: actions/setup-node@v4
         with:
           node-version: 22

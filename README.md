@@ -1,294 +1,129 @@
-# RESET v0.5 — Daily Render Architecture
+# RESET
 
-**RESET = Rendered Elsewhere, Spoken Each Time.**
+**Rendered Elsewhere, Spoken Each Time.**
 
-This version keeps the animated dock UI from v0.4, but changes the expensive AI path from *live inference* to a **daily pre-render compiler**.
+RESET is a tiny pattern-break: one short scene, a living dock backdrop driven by the scene's exact time, and a pre-rendered Kokoro voice.
 
-At ~02:37 Asia/Kolkata each day, GitHub Actions can:
+This repository is designed for **GitHub Pages + GitHub Actions**. The live page is static. Gemma and Kokoro work at 03:00 Asia/Kolkata, not when the user presses RESET.
 
-1. restore/pull **Gemma 3 4B** through Ollama;
-2. generate a diversified deck of RESET scenes;
-3. use the existing fixture scenes as rotating few-shot examples;
-4. have Gemma return an exact `sceneTime` (`HH:MM`) and one of the two Kokoro voice IDs;
-5. validate timestamps, prose length, and novelty;
-6. synthesize every accepted scene with **Kokoro-82M** (`af_nicole` / `am_michael`);
-7. compress audio to 64 kbps MP3 when ffmpeg is available;
-8. build `public/generated/latest.json` plus the finished audio deck;
-9. deploy the static site to GitHub Pages;
-10. commit only the compact 30-day novelty history — **not model weights and not daily audio**.
-
-The result is that the browser wakes up to finished scenes and finished audio. Gemma and Kokoro do not need to run on the user's machine during normal use.
-
-## Runtime architecture
+## Production architecture
 
 ```text
-02:37 daily GitHub Action
-        |
-        +--> world capsule + creative pressure + time envelope
-        |
-        +--> rotating few-shot fixture examples
-        |
-        v
-    Gemma 3 4B
-        |
-        +--> scene (40-90 words)
-        +--> exact sceneTime HH:MM
-        +--> af_nicole | am_michael
-        |
-        v
- validation + 30-day novelty checks
-        |
-        v
-    Kokoro-82M
-        |
-        v
-  finished MP3/WAV
-        |
-        v
- public/generated/latest.json
-        |
-        v
-    GitHub Pages
+03:00 Asia/Kolkata
+        ↓
+GitHub Actions runner
+        ↓
+Gemma 3 4B (Ollama)
+        ↓
+exactly 3 scenes
+  scene + HH:MM + Nicole/Michael
+        ↓
+Kokoro-82M
+        ↓
+3 finished audio files + latest.json
+        ↓
+append canonical rows to data/reset_journal.parquet
+        ↓
+export a small JSON journal view
+        ↓
+GitHub Pages deployment
 
-Morning / normal use:
-RESET click -> today's manifest -> scene + exact dock time + pre-rendered audio
+Browser
+  ↓
+static HTML/CSS/Canvas + today's 3 scenes/audio
 ```
 
-## Important design detail: time
+The browser never runs Gemma or Kokoro in production.
 
-The daily compiler gives Gemma a **broad time envelope** such as dawn, afternoon, dusk, or deep night. Gemma chooses the exact timestamp inside that envelope and returns it as `sceneTime` in `HH:MM` format.
+## Three RESETs per day
 
-This gives the model enough authorship to align prose with the visual atmosphere while software keeps the daily deck distributed across the full 24-hour visual toolkit.
+The production workflow is hard-limited to **three generated scenes per date**. A normal manual rerun is a no-op if the Parquet journal already contains three scenes for that date.
 
-The dock receives `sceneTimeMinutes` directly. The frontend never tries to infer time from prose.
+The three scenes carry exact `sceneTime` values chosen by Gemma inside software-selected time envelopes. Those timestamps drive the dock lighting, fish visibility, water reflections, stars, sun/moon position, and the rest of the visual atmosphere.
 
-## Few-shot behavior
+## RESET journal
 
-The original fixture scenes are now the editorial examples for Gemma. Each model call gets a random subset (default: four), excluding the fixture that directly matches the current world capsule where possible.
+`data/reset_journal.parquet` is the durable journal and source of truth. Each row records:
 
-The system prompt explicitly tells Gemma that the examples demonstrate **quality and range only** and must not be copied structurally. This matters with a 4B model: feeding all fixtures on every call would encourage a house formula.
+- date and slot
+- generated scene
+- exact scene time / minute-of-day / semantic band
+- Kokoro voice
+- Gemma model name
+- world-capsule id
+- creative-pressure metadata
+- generation trigger and GitHub run id
 
-Configure the count with:
+The workflow commits the Parquet file after each successful daily render.
 
-```text
-RESET_FEW_SHOT_COUNT=4
-```
+Two JSON files are derived from it:
 
-## Daily pack format
+- `data/history.json` — compact recent history used for novelty pressure in future Gemma runs
+- `public/generated/journal.json` — static browser view consumed by `journal.html`
 
-`public/generated/latest.json` looks conceptually like:
+The Journal link in the UI shows the complete committed scene record without requiring a server.
 
-```json
-{
-  "version": 1,
-  "date": "2026-09-08",
-  "generatedAt": "...",
-  "model": "gemma3:4b",
-  "count": 24,
-  "scenes": [
-    {
-      "id": "2026-09-08-001",
-      "scene": "...",
-      "sceneTime": "05:18",
-      "sceneTimeMinutes": 318,
-      "sceneTimeBand": "dawn",
-      "voice": "af_nicole",
-      "audioUrl": "generated/2026-09-08/audio/2026-09-08-001.mp3",
-      "worldCapsuleId": "...",
-      "creativePressure": ["..."],
-      "timeEnvelope": "dawn"
-    }
-  ]
-}
-```
+## Hail a RESET
 
-The browser tracks which scene IDs it has already used for that day's pack and avoids repeats until the deck is exhausted.
+The static site includes a **Hail a RESET** button. It opens the repository's `Render three daily RESETs` workflow, where the owner can press **Run workflow**.
 
-## GitHub setup
+A GitHub Pages site cannot securely invoke a write-capable Actions API by itself without exposing a credential or adding a backend. Linking to GitHub's authenticated workflow-dispatch UI preserves the static/security model.
 
-### 1. Create/push the repository
+## Fixtures as few-shot examples
 
-Put this source tree on the repository's default branch (normally `main`).
+The existing hand-written scenes remain in `src/generation/fixtureSceneProvider.js`. In Gemma mode, a rotating subset is used as few-shot examples of editorial range. The prompt explicitly tells Gemma not to copy their syntax, structure, subjects, endings, or imagery.
 
-### 2. Enable GitHub Pages via Actions
-
-In the repository settings, configure **Pages** to deploy from GitHub Actions.
-
-The included workflow is:
-
-```text
-.github/workflows/daily-render.yml
-```
-
-It has both `schedule` and `workflow_dispatch`, so run it manually once before waiting for the scheduled job.
-
-### 3. Optional repository variable
-
-Create this Actions **Repository variable** if you want the user's coarse location to weakly influence the creative brief:
-
-```text
-RESET_USER_PLACE=Bengaluru, India
-```
-
-Do not put a precise address here. Leaving it unset is valid.
-
-### 4. No Gemma or Kokoro secrets are required by default
-
-The workflow uses:
-
-- Ollama + `gemma3:4b`
-- local `kokoro-js`
-- GitHub Actions caches for model payloads
-
-No model weights are committed to Git.
-
-If the runner model setup is changed later, use the existing provider boundaries rather than changing the app.
-
-## Workflows
-
-### `daily-render.yml`
-
-Scheduled daily render + GitHub Pages deployment. Default target is 24 finished scenes.
-
-Manual inputs let you override:
-
-- scene count
-- pack date
-
-### `render-smoke.yml`
-
-Manual one-scene model/audio smoke test. It uploads the generated pack as a short-lived Actions artifact instead of deploying it.
-
-Use this first to prove the runner can load Gemma and Kokoro.
-
-### `ci.yml`
-
-Runs syntax checks and tests on pushes and pull requests.
-
-## Commands
-
-### Development app with fixtures
+## Local development
 
 ```bash
 npm install
 npm start
 ```
 
-Open:
+Open `http://localhost:3000`.
 
-```text
-http://localhost:3000
-```
+Localhost retains the development API fallback. GitHub Pages does not.
 
-If `public/generated/latest.json` does not exist, RESET falls back to the live `/api/reset` fixture/model route.
-
-### Run tests
+Tests:
 
 ```bash
 npm run check
 npm test
 ```
 
-### Compile a daily pack locally
+## Workflows
 
-First expose Gemma through an OpenAI-compatible endpoint. The included Actions workflow uses Ollama:
+- `.github/workflows/daily-render.yml` — scheduled and manual production render; fixed at 3 scenes
+- `.github/workflows/render-smoke.yml` — one-scene model/TTS smoke test
+- `.github/workflows/ci.yml` — syntax/tests
 
-```bash
-ollama serve
-ollama pull gemma3:4b
-```
+The production schedule is `03:00` with `timezone: Asia/Kolkata`.
 
-Then in another terminal:
+## First deployment
 
-```bash
-RESET_MODEL_URL=http://127.0.0.1:11434 \
-RESET_MODEL_NAME=gemma3:4b \
-RESET_DAILY_COUNT=4 \
-npm run daily:render
-```
+1. In **Settings → Pages**, select **GitHub Actions** as the source.
+2. Push this repository.
+3. Open **Actions → Render three daily RESETs → Run workflow** once.
+4. The workflow will render three scenes, journal them, and deploy the static site.
+5. Future daily runs occur automatically at 03:00 Asia/Kolkata.
 
-On Windows CMD, set environment variables separately before running the command.
-
-## Novelty
-
-`data/history.json` retains compact metadata for the most recent 30 days by default.
-
-The compiler rejects:
-
-- exact duplicate prose;
-- repeated seven-word openings;
-- high trigram-overlap near duplicates;
-- malformed timestamps;
-- timestamps outside the requested visual time envelope;
-- invalid voice IDs;
-- scenes outside 40-90 words;
-- obvious RESET/meta/self-help output.
-
-The same day's accepted scenes are compared against each other as well as recent history.
-
-This is intentionally only a first novelty layer. Future evaluation should add structural fingerprints and the planned 500/1000-scene variability audit.
-
-## Audio
-
-The compiler synthesizes with Kokoro locally. It asks for only:
+Optional repository variable:
 
 ```text
-af_nicole
-am_michael
+RESET_USER_PLACE=Bengaluru, India
 ```
 
-When `RESET_AUDIO_FORMAT=mp3`, the compiler uses ffmpeg to convert generated WAV to 64 kbps MP3. If ffmpeg is unavailable it keeps the WAV instead.
+This is weak creative context only; it does not determine the generated location.
 
-The daily GitHub workflow installs ffmpeg.
+## Runtime output
 
-The browser receives an `audioUrl` and plays that finished file through the already-hardened Web Audio path. If the daily pack is absent during local development, the previous live Kokoro/browser fallback still exists.
-
-## Model and cache boundaries
-
-Model weights do **not** belong in the repository.
-
-The GitHub workflow caches:
+The Pages artifact contains only static files and the current day's audio pack:
 
 ```text
-~/.ollama/models
-node_modules/.cache/onnx-community
+public/generated/latest.json
+public/generated/YYYY-MM-DD/manifest.json
+public/generated/YYYY-MM-DD/audio/*.mp3
+public/generated/journal.json
 ```
 
-The repo contains only code, prompt logic, fixture examples, and compact novelty history.
-
-## World browsing status
-
-The daily compiler currently uses the existing `WorldCapsule` pool. The single `WorldBrowseTool` abstraction remains in the repository, but automatic public-web replenishment is deliberately not coupled to the GitHub workflow yet because no search provider/API was chosen.
-
-That is the next clean extension: generate/replenish WorldCapsules separately, then let the daily compiler consume the cache. It should not be mixed into the time-critical morning render path.
-
-## GitHub Pages / PWA compatibility
-
-v0.5 changes static asset and service-worker paths to be **scope-relative**, so the app can work under a GitHub Pages project path such as:
-
-```text
-https://USER.github.io/REPOSITORY/
-```
-
-The service worker uses:
-
-- network-first behavior for `generated/latest.json` so a new day's deck replaces yesterday's;
-- cache-first behavior for generated audio after first playback;
-- network-first shell assets with offline fallback.
-
-## Current limitations
-
-- The scheduled render is only as reliable as GitHub Actions queueing. The workflow is intentionally scheduled at `02:37`, away from the top of the hour.
-- The first runner execution must download/cache Gemma and Kokoro, so it is much slower than later runs.
-- Automatic browsing-driven WorldCapsule replenishment is not yet enabled.
-- Gemma is still a small model. The compiler compensates using time envelopes, few-shot rotation, retries, validation, and novelty rejection rather than assuming every generation is good.
-
-## Recommended first Actions sequence
-
-1. Push this repo.
-2. Enable Pages -> GitHub Actions.
-3. Run **RESET CI**.
-4. Run **Model render smoke test** and inspect the one generated audio file.
-5. Run **Render daily RESET deck** manually with `count=4`.
-6. Open the deployed Pages URL and test all four scenes.
-7. Increase the default back to 24 after the end-to-end path is proven.
+Historical audio is not committed. Historical scenes and metadata live in Parquet.

@@ -7,8 +7,8 @@ export async function getDailyScene() {
 
   const state = loadState(pack.date);
   const available = pack.scenes.filter(item => !state.used.includes(item.id));
-  const pool = available.length ? available : pack.scenes;
-  const chosen = pool[Math.floor(Math.random() * pool.length)];
+  const candidates = available.length ? available : pack.scenes;
+  const chosen = candidates[Math.floor(Math.random() * candidates.length)];
 
   const nextUsed = available.length ? [...state.used, chosen.id] : [chosen.id];
   saveState({ date: pack.date, used: nextUsed.slice(-pack.scenes.length) });

@@ -57,7 +57,9 @@ async function runReset() {
 
   try {
     let payload = await getDailyScene().catch(() => null);
-    if (!payload) {
+    // GitHub Pages is intentionally static. Localhost keeps the development API fallback;
+    // production waits for the three pre-rendered daily RESETs.
+    if (!payload && isLocalDevelopment()) {
       const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || 'unknown';
       const apiUrl = new URL('./api/reset', document.baseURI);
       apiUrl.searchParams.set('place', timeZone);
@@ -68,6 +70,7 @@ async function runReset() {
       if (!response.ok) throw new Error(`RESET request failed (${response.status})`);
       payload = await response.json();
     }
+    if (!payload) throw new Error('Today’s three RESETs have not arrived yet.');
     validatePayload(payload);
 
     const nextTheme = themeForTime(payload.sceneTimeMinutes, payload.scene);
@@ -111,7 +114,7 @@ function setState(next) {
     statusText.textContent = 'Rendering elsewhere…';
     sceneShell.setAttribute('aria-busy', 'true');
   } else if (next === 'error') {
-    statusText.textContent = 'Couldn’t reach elsewhere. Try again.';
+    statusText.textContent = 'Today’s RESETs haven’t arrived yet. Hail one from GitHub Actions.';
     sceneShell.setAttribute('aria-busy', 'false');
   } else {
     if (!app.dataset.audio || app.dataset.audio === 'idle') statusText.textContent = '';
@@ -160,4 +163,9 @@ async function registerServiceWorker() {
   } catch (error) {
     console.warn('Service worker registration failed', error);
   }
+}
+
+
+function isLocalDevelopment() {
+  return location.hostname === 'localhost' || location.hostname === '127.0.0.1';
 }

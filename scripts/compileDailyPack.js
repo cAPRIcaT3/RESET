@@ -8,12 +8,11 @@ import { createCreativePressure } from '../src/variation/creativePressure.js';
 import { fixtureWorldCapsules } from '../src/world/worldCapsules.js';
 import { shuffledTimeEnvelopes, timeWithinEnvelope } from '../src/variation/timeEnvelope.js';
 import { KokoroClient } from '../src/voice/kokoroClient.js';
-import { loadDailyHistory, appendDailyHistory, historySceneTexts } from '../src/daily/historyStore.js';
+import { loadDailyHistory, historySceneTexts } from '../src/daily/historyStore.js';
 import { isNearDuplicate } from '../src/daily/novelty.js';
 
-const targetCount = Number(process.env.RESET_DAILY_COUNT || 24);
-const maxAttempts = Number(process.env.RESET_DAILY_MAX_ATTEMPTS || Math.max(targetCount * 5, 80));
-const retainDays = Number(process.env.RESET_HISTORY_DAYS || 30);
+const targetCount = process.env.RESET_DAILY_MODE === 'smoke' ? 1 : 3;
+const maxAttempts = Number(process.env.RESET_DAILY_MAX_ATTEMPTS || 36);
 const date = process.env.RESET_PACK_DATE || new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Kolkata' }).format(new Date());
 const outputRoot = path.resolve('public', 'generated');
 const packDir = path.join(outputRoot, date);
@@ -67,7 +66,7 @@ for (let attempt = 1; attempt <= maxAttempts && accepted.length < targetCount; a
       creativePressure,
       sceneTimeEnvelope: envelope,
       userContext: {
-        localTime: process.env.RESET_USER_LOCAL_TIME || '02:37',
+        localTime: process.env.RESET_USER_LOCAL_TIME || '03:00',
         coarsePlace: process.env.RESET_USER_PLACE || 'unknown'
       },
       recentAvoidances,
@@ -116,7 +115,7 @@ if (accepted.length < targetCount) {
 }
 
 const manifest = {
-  version: 1,
+  version: 2,
   date,
   generatedAt: new Date().toISOString(),
   model: process.env.RESET_MODEL_NAME || 'gemma3:4b',
@@ -125,15 +124,6 @@ const manifest = {
 };
 await fs.writeFile(path.join(packDir, 'manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`);
 await fs.writeFile(path.join(outputRoot, 'latest.json'), `${JSON.stringify(manifest, null, 2)}\n`);
-
-await appendDailyHistory(historyFile, {
-  date,
-  generatedAt: manifest.generatedAt,
-  model: manifest.model,
-  scenes: accepted.map(({ id, scene, sceneTime, sceneTimeMinutes, sceneTimeBand, voice, worldCapsuleId, creativePressure, timeEnvelope }) => ({
-    id, scene, sceneTime, sceneTimeMinutes, sceneTimeBand, voice, worldCapsuleId, creativePressure, timeEnvelope
-  }))
-}, { filePath: historyPath, retainDays });
 
 console.log(`Wrote ${path.relative(process.cwd(), path.join(packDir, 'manifest.json'))}`);
 console.log(`Voice split: ${JSON.stringify(Object.fromEntries(voiceUsage))}`);
