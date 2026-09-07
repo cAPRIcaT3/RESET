@@ -1,214 +1,214 @@
-name: Render three daily RESETs
+  name: Render three daily RESETs
 
-on:
-  workflow_dispatch:
-    inputs:
-      pack_date:
-        description: Optional YYYY-MM-DD override (normally leave blank)
-        required: false
-        default: ''
-  schedule:
-    - cron: '0 3 * * *'
-      timezone: 'Asia/Kolkata'
+  on:
+    workflow_dispatch:
+      inputs:
+        pack_date:
+          description: Optional YYYY-MM-DD override (normally leave blank)
+          required: false
+          default: ''
+    schedule:
+      - cron: '30 21 * * *'
 
-concurrency:
-  group: reset-daily-render
-  cancel-in-progress: false
+  concurrency:
+    group: reset-daily-render
+    cancel-in-progress: false
 
-permissions:
-  contents: write
-  pages: write
-  id-token: write
+  permissions:
+    contents: write
+    pages: write
+    id-token: write
 
-environment:
-  name: github-pages
-  url: ${{ steps.deployment.outputs.page_url }}
+  environment:
+    name: github-pages
+    url: ${{ steps.deployment.outputs.page_url }}
 
-jobs:
-  render:
-    runs-on: ubuntu-latest
-    timeout-minutes: 90
-    env:
-      RESET_SCENE_PROVIDER: openai_compat
-      RESET_MODEL_URL: http://127.0.0.1:11434
-      RESET_MODEL_NAME: gemma3:4b
-      RESET_MODEL_API_KEY: ollama
-      RESET_MODEL_TIMEOUT_MS: '180000'
-      RESET_FEW_SHOT_COUNT: '4'
-      RESET_MODEL_TEMPERATURE: '1.05'
-      RESET_MODEL_TOP_P: '0.92'
-      RESET_DAILY_MAX_ATTEMPTS: '36'
-      RESET_AUDIO_FORMAT: mp3
-      RESET_USER_PLACE: ${{ vars.RESET_USER_PLACE || 'unknown' }}
-      RESET_USER_LOCAL_TIME: '03:00'
+  jobs:
+    render:
+      runs-on: ubuntu-latest
+      timeout-minutes: 90
+      
+      env:
+        RESET_SCENE_PROVIDER: openai_compat
+        RESET_MODEL_URL: http://127.0.0.1:11434
+        RESET_MODEL_NAME: gemma3:4b
+        RESET_MODEL_API_KEY: ollama
+        RESET_MODEL_TIMEOUT_MS: '180000'
+        RESET_FEW_SHOT_COUNT: '4'
+        RESET_MODEL_TEMPERATURE: '1.05'
+        RESET_MODEL_TOP_P: '0.92'
+        RESET_DAILY_MAX_ATTEMPTS: '36'
+        RESET_AUDIO_FORMAT: mp3
+        RESET_USER_PLACE: ${{ vars.RESET_USER_PLACE || 'unknown' }}
+        RESET_USER_LOCAL_TIME: '03:00'
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-        with:
-          fetch-depth: 1
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v6
+          with:
+            fetch-depth: 1
 
-      - name: Set pack date
-        id: pack_date
-        shell: bash
-        env:
-          INPUT_DATE: ${{ inputs.pack_date || '' }}
-        run: |
-          set -euo pipefail
-          if [[ -n "$INPUT_DATE" ]]; then
-            PACK_DATE="$INPUT_DATE"
-          else
-            PACK_DATE="$(TZ=Asia/Kolkata date +%F)"
-          fi
-          echo "RESET_PACK_DATE=$PACK_DATE" >> "$GITHUB_ENV"
-          echo "date=$PACK_DATE" >> "$GITHUB_OUTPUT"
-          echo "Pack date: $PACK_DATE"
-
-      - name: Set up Python journal tooling
-        uses: actions/setup-python@v6
-        with:
-          python-version: '3.12'
-          cache: pip
-          cache-dependency-path: requirements-journal.txt
-
-      - name: Install journal dependency
-        run: pip install -r requirements-journal.txt
-
-      - name: Check whether today's three already exist
-        id: journal_check
-        shell: bash
-        run: |
-          python scripts/resetJournal.py check-date \
-            --parquet data/reset_journal.parquet \
-            --date "$RESET_PACK_DATE" \
-            --expected-count 3 \
-            --github-output "$GITHUB_OUTPUT"
-
-      - name: Explain no-op
-        if: steps.journal_check.outputs.should_render != 'true'
-        run: echo "$RESET_PACK_DATE already has three journaled RESETs. Nothing new was generated."
-
-      - name: Export Parquet journal into model history
-        if: steps.journal_check.outputs.should_render == 'true'
-        run: |
-          python scripts/resetJournal.py export-views \
-            --parquet data/reset_journal.parquet \
-            --history-json data/history.json \
-            --public-json public/generated/journal.json \
-            --history-days 60
-
-      - name: Set up Node
-        if: steps.journal_check.outputs.should_render == 'true'
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-
-      - name: Install Node dependencies
-        if: steps.journal_check.outputs.should_render == 'true'
-        run: npm ci
-
-      - name: Restore Kokoro model cache
-        if: steps.journal_check.outputs.should_render == 'true'
-        uses: actions/cache@v4
-        with:
-          path: node_modules/.cache/onnx-community
-          key: kokoro-82m-q8-${{ runner.os }}-v1
-
-      - name: Restore Gemma/Ollama model cache
-        if: steps.journal_check.outputs.should_render == 'true'
-        uses: actions/cache@v4
-        with:
-          path: ~/.ollama/models
-          key: ollama-gemma3-4b-${{ runner.os }}-v1
-
-      - name: Install ffmpeg
-        if: steps.journal_check.outputs.should_render == 'true'
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
-
-      - name: Install Ollama
-        if: steps.journal_check.outputs.should_render == 'true'
-        shell: bash
-        run: |
-          set -euo pipefail
-          curl -fsSL https://ollama.com/install.sh | sh
-          nohup ollama serve > /tmp/ollama.log 2>&1 &
-          for i in {1..60}; do
-            if curl -fsS http://127.0.0.1:11434/api/tags >/dev/null 2>&1; then
-              exit 0
+        - name: Set pack date
+          id: pack_date
+          shell: bash
+          env:
+            INPUT_DATE: ${{ inputs.pack_date || '' }}
+          run: |
+            set -euo pipefail
+            if [[ -n "$INPUT_DATE" ]]; then
+              PACK_DATE="$INPUT_DATE"
+            else
+              PACK_DATE="$(TZ=Asia/Kolkata date +%F)"
             fi
-            sleep 1
-          done
-          cat /tmp/ollama.log || true
-          echo 'Ollama did not become ready in time' >&2
-          exit 1
+            echo "RESET_PACK_DATE=$PACK_DATE" >> "$GITHUB_ENV"
+            echo "date=$PACK_DATE" >> "$GITHUB_OUTPUT"
+            echo "Pack date: $PACK_DATE"
 
-      - name: Ensure Gemma 3 4B is available
-        if: steps.journal_check.outputs.should_render == 'true'
-        run: ollama pull gemma3:4b
+        - name: Set up Python journal tooling
+          uses: actions/setup-python@v6
+          with:
+            python-version: '3.12'
+            cache: pip
+            cache-dependency-path: requirements-journal.txt
 
-      - name: Run RESET tests
-        if: steps.journal_check.outputs.should_render == 'true'
-        run: |
-          npm run check
-          npm test
+        - name: Install journal dependency
+          run: pip install -r requirements-journal.txt
 
-      - name: Render exactly three RESETs with Gemma + Kokoro
-        if: steps.journal_check.outputs.should_render == 'true'
-        run: npm run daily:render
+        - name: Check whether today's three already exist
+          id: journal_check
+          shell: bash
+          run: |
+            python scripts/resetJournal.py check-date \
+              --parquet data/reset_journal.parquet \
+              --date "$RESET_PACK_DATE" \
+              --expected-count 3 \
+              --github-output "$GITHUB_OUTPUT"
 
-      - name: Append today's three to the Parquet journal
-        if: steps.journal_check.outputs.should_render == 'true'
-        run: |
-          python scripts/resetJournal.py append-manifest \
-            --parquet data/reset_journal.parquet \
-            --manifest "public/generated/$RESET_PACK_DATE/manifest.json" \
-            --expected-count 3 \
-            --trigger "${{ github.event_name }}" \
-            --run-id "${{ github.run_id }}"
+        - name: Explain no-op
+          if: steps.journal_check.outputs.should_render != 'true'
+          run: echo "$RESET_PACK_DATE already has three journaled RESETs. Nothing new was generated."
 
-      - name: Refresh journal views after append
-        if: steps.journal_check.outputs.should_render == 'true'
-        run: |
-          python scripts/resetJournal.py export-views \
-            --parquet data/reset_journal.parquet \
-            --history-json data/history.json \
-            --public-json public/generated/journal.json \
-            --history-days 60
+        - name: Export Parquet journal into model history
+          if: steps.journal_check.outputs.should_render == 'true'
+          run: |
+            python scripts/resetJournal.py export-views \
+              --parquet data/reset_journal.parquet \
+              --history-json data/history.json \
+              --public-json public/generated/journal.json \
+              --history-days 60
 
-      - name: Show generated summary
-        if: steps.journal_check.outputs.should_render == 'true'
-        run: |
-          node -e "const p=require('./public/generated/latest.json'); if(p.count!==3) process.exit(2); console.log({date:p.date,count:p.count,model:p.model,scenes:p.scenes.map(s=>({time:s.sceneTime,voice:s.voice}))})"
-          ls -lh data/reset_journal.parquet
-          du -sh public/generated || true
+        - name: Set up Node
+          if: steps.journal_check.outputs.should_render == 'true'
+          uses: actions/setup-node@v4
+          with:
+            node-version: 22
+            cache: npm
 
-      - name: Commit Parquet journal
-        if: steps.journal_check.outputs.should_render == 'true'
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name 'reset-render-bot'
-          git config user.email 'reset-render-bot@users.noreply.github.com'
-          git add data/reset_journal.parquet data/history.json
-          if git diff --cached --quiet; then
-            echo 'Journal unchanged.'
-          else
-            git commit -m "journal(reset): $RESET_PACK_DATE"
-            git push
-          fi
+        - name: Install Node dependencies
+          if: steps.journal_check.outputs.should_render == 'true'
+          run: npm ci
 
-      - name: Configure GitHub Pages
-        if: steps.journal_check.outputs.should_render == 'true'
-        uses: actions/configure-pages@v5
+        - name: Restore Kokoro model cache
+          if: steps.journal_check.outputs.should_render == 'true'
+          uses: actions/cache@v4
+          with:
+            path: node_modules/.cache/onnx-community
+            key: kokoro-82m-q8-${{ runner.os }}-v1
 
-      - name: Upload static RESET site
-        if: steps.journal_check.outputs.should_render == 'true'
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: public
+        - name: Restore Gemma/Ollama model cache
+          if: steps.journal_check.outputs.should_render == 'true'
+          uses: actions/cache@v4
+          with:
+            path: ~/.ollama/models
+            key: ollama-gemma3-4b-${{ runner.os }}-v1
 
-      - name: Deploy GitHub Pages
-        if: steps.journal_check.outputs.should_render == 'true'
-        id: deployment
-        uses: actions/deploy-pages@v4
+        - name: Install ffmpeg
+          if: steps.journal_check.outputs.should_render == 'true'
+          run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+
+        - name: Install Ollama
+          if: steps.journal_check.outputs.should_render == 'true'
+          shell: bash
+          run: |
+            set -euo pipefail
+            curl -fsSL https://ollama.com/install.sh | sh
+            nohup ollama serve > /tmp/ollama.log 2>&1 &
+            for i in {1..60}; do
+              if curl -fsS http://127.0.0.1:11434/api/tags >/dev/null 2>&1; then
+                exit 0
+              fi
+              sleep 1
+            done
+            cat /tmp/ollama.log || true
+            echo 'Ollama did not become ready in time' >&2
+            exit 1
+
+        - name: Ensure Gemma 3 4B is available
+          if: steps.journal_check.outputs.should_render == 'true'
+          run: ollama pull gemma3:4b
+
+        - name: Run RESET tests
+          if: steps.journal_check.outputs.should_render == 'true'
+          run: |
+            npm run check
+            npm test
+
+        - name: Render exactly three RESETs with Gemma + Kokoro
+          if: steps.journal_check.outputs.should_render == 'true'
+          run: npm run daily:render
+
+        - name: Append today's three to the Parquet journal
+          if: steps.journal_check.outputs.should_render == 'true'
+          run: |
+            python scripts/resetJournal.py append-manifest \
+              --parquet data/reset_journal.parquet \
+              --manifest "public/generated/$RESET_PACK_DATE/manifest.json" \
+              --expected-count 3 \
+              --trigger "${{ github.event_name }}" \
+              --run-id "${{ github.run_id }}"
+
+        - name: Refresh journal views after append
+          if: steps.journal_check.outputs.should_render == 'true'
+          run: |
+            python scripts/resetJournal.py export-views \
+              --parquet data/reset_journal.parquet \
+              --history-json data/history.json \
+              --public-json public/generated/journal.json \
+              --history-days 60
+
+        - name: Show generated summary
+          if: steps.journal_check.outputs.should_render == 'true'
+          run: |
+            node -e "const p=require('./public/generated/latest.json'); if(p.count!==3) process.exit(2); console.log({date:p.date,count:p.count,model:p.model,scenes:p.scenes.map(s=>({time:s.sceneTime,voice:s.voice}))})"
+            ls -lh data/reset_journal.parquet
+            du -sh public/generated || true
+
+        - name: Commit Parquet journal
+          if: steps.journal_check.outputs.should_render == 'true'
+          shell: bash
+          run: |
+            set -euo pipefail
+            git config user.name 'reset-render-bot'
+            git config user.email 'reset-render-bot@users.noreply.github.com'
+            git add data/reset_journal.parquet data/history.json
+            if git diff --cached --quiet; then
+              echo 'Journal unchanged.'
+            else
+              git commit -m "journal(reset): $RESET_PACK_DATE"
+              git push
+            fi
+
+        - name: Configure GitHub Pages
+          if: steps.journal_check.outputs.should_render == 'true'
+          uses: actions/configure-pages@v5
+
+        - name: Upload static RESET site
+          if: steps.journal_check.outputs.should_render == 'true'
+          uses: actions/upload-pages-artifact@v4
+          with:
+            path: public
+
+        - name: Deploy GitHub Pages
+          if: steps.journal_check.outputs.should_render == 'true'
+          id: deployment
+          uses: actions/deploy-pages@v4
