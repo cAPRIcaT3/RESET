@@ -1,4 +1,53 @@
 {
-  "version": 1,
-  "days": []
+  "version": 2,
+  "source": "data/reset_journal.parquet",
+  "days": [
+    {
+      "date": "2026-09-08",
+      "scenes": [
+        {
+          "id": "2026-09-08-001",
+          "scene": "The pharmacist slams the shutter down with a metallic thud, the sound echoing in the pre-dawn quiet. He checks the counter for the second time, picking up and replacing the stack of receipt paper. A delivery cart sits just outside, piled high with boxes of antiseptic wipes. He examines the barcode scanner, then pulls out a small flashlight to inspect a flickering fluorescent tube. A single, insistent beep from the stockroom answers him.",
+          "sceneTime": "05:17",
+          "sceneTimeMinutes": 317,
+          "sceneTimeBand": "dawn",
+          "voice": "af_nicole",
+          "worldCapsuleId": "bengaluru-pharmacy",
+          "creativePressure": [
+            "begin with action rather than setting",
+            "focus on a small physical process"
+          ],
+          "timeEnvelope": "dawn"
+        },
+        {
+          "id": "2026-09-08-002",
+          "scene": "The forklift operator adjusts the load, nearly clipping a stack of corrugated cardboard. A mechanic shouts something about a faulty roller door, the words lost in the clatter of the port. Someone orders three spicy noodles from the worker restaurant across the street, the delivery guy weaving through the narrow loading bays on his scooter. A wrench hits metal with a dull thud. The air smells of saltwater and engine oil.",
+          "sceneTime": "21:12",
+          "sceneTimeMinutes": 1272,
+          "sceneTimeBand": "evening",
+          "voice": "af_nicole",
+          "worldCapsuleId": "kaohsiung-industrial-edge",
+          "creativePressure": [
+            "do not end with silence or a fading sound",
+            "human activity without introspection"
+          ],
+          "timeEnvelope": "evening"
+        },
+        {
+          "id": "2026-09-08-003",
+          "scene": "The radio crackles with static. A mechanic fiddles with the fuel injector on the flatbed truck, sweat glistening on his forehead. His wife sits on the tailgate, meticulously cleaning a dent in the guardrail with a rag. Another worker, younger, is using a small shovel to move gravel, a rhythmic scraping sound against the rock. Across the narrow turn, a man leans against the truck, staring at the valley, the setting sun a thin orange stripe on the distant peaks. He doesn't speak.",
+          "sceneTime": "18:57",
+          "sceneTimeMinutes": 1137,
+          "sceneTimeBand": "dusk",
+          "voice": "af_nicole",
+          "worldCapsuleId": "andes-mountain-road",
+          "creativePressure": [
+            "domestic and specific, not sentimental",
+            "several people, no single protagonist"
+          ],
+          "timeEnvelope": "dusk"
+        }
+      ]
+    }
+  ]
 }
