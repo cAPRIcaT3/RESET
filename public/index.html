@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#11152b" />
+  <meta name="description" content="RESET — Rendered Elsewhere, Spoken Each Time." />
+  <title>RESET</title>
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="./icons/reset-icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main id="app" class="app" data-state="resting">
+    <div class="atmosphere" aria-hidden="true">
+      <div class="atmosphere__base"></div>
+      <div class="atmosphere__glow"></div>
+      <canvas id="dockCanvas" class="atmosphere__dock"></canvas>
+      <div class="atmosphere__veil"></div>
+      <div class="atmosphere__grain"></div>
+    </div>
+
+    <header class="brand" aria-label="RESET — Rendered Elsewhere, Spoken Each Time">
+      <span class="brand__name">RESET</span>
+      <span class="brand__meaning">Rendered Elsewhere, Spoken Each Time</span>
+    </header>
+
+    <section id="sceneShell" class="scene-shell" aria-live="polite" aria-atomic="true">
+      <p id="scene" class="scene"></p>
+    </section>
+
+    <div class="controls">
+      <p id="statusText" class="status" role="status"></p>
+      <button id="resetButton" class="reset-button" type="button" aria-label="Generate a new RESET scene">
+        <span class="reset-button__ring" aria-hidden="true"></span>
+        <span class="reset-button__label">RESET</span>
+        <span class="reset-button__spark" aria-hidden="true"></span>
+      </button>
+    </div>
+  </main>
+
+  <noscript>RESET needs JavaScript enabled.</noscript>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

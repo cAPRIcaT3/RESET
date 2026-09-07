@@ -1,0 +1,139 @@
+name: Render daily RESET deck
+
+on:
+  workflow_dispatch:
+    inputs:
+      count:
+        description: Number of finished RESET scenes
+        required: false
+        default: '24'
+      pack_date:
+        description: Optional YYYY-MM-DD override
+        required: false
+        default: ''
+  schedule:
+    # Intentionally away from :00 because scheduled Actions can be delayed at high-load boundaries.
+    - cron: '37 2 * * *'
+      timezone: 'Asia/Kolkata'
+
+concurrency:
+  group: reset-daily-render
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+environment:
+  name: github-pages
+  url: ${{ steps.deployment.outputs.page_url }}
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      RESET_SCENE_PROVIDER: openai_compat
+      RESET_MODEL_URL: http://127.0.0.1:11434
+      RESET_MODEL_NAME: gemma3:4b
+      RESET_MODEL_API_KEY: ollama
+      RESET_MODEL_TIMEOUT_MS: '180000'
+      RESET_FEW_SHOT_COUNT: '4'
+      RESET_MODEL_TEMPERATURE: '1.05'
+      RESET_MODEL_TOP_P: '0.92'
+      RESET_DAILY_COUNT: ${{ github.event.inputs.count || '24' }}
+      RESET_DAILY_MAX_ATTEMPTS: '140'
+      RESET_HISTORY_DAYS: '30'
+      RESET_AUDIO_FORMAT: mp3
+      RESET_PACK_DATE: ${{ github.event.inputs.pack_date || '' }}
+      RESET_USER_PLACE: ${{ vars.RESET_USER_PLACE || 'unknown' }}
+      RESET_USER_LOCAL_TIME: '02:37'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Restore Kokoro model cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules/.cache/onnx-community
+          key: kokoro-82m-q8-${{ runner.os }}-v1
+
+      - name: Restore Gemma/Ollama model cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.ollama/models
+          key: ollama-gemma3-4b-${{ runner.os }}-v1
+
+      - name: Install ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+
+      - name: Install Ollama
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL https://ollama.com/install.sh | sh
+          nohup ollama serve > /tmp/ollama.log 2>&1 &
+          for i in {1..60}; do
+            if curl -fsS http://127.0.0.1:11434/api/tags >/dev/null 2>&1; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/ollama.log || true
+          echo 'Ollama did not become ready in time' >&2
+          exit 1
+
+      - name: Ensure Gemma 3 4B is available
+        run: ollama pull gemma3:4b
+
+      - name: Run RESET tests
+        run: |
+          npm run check
+          npm test
+
+      - name: Render daily deck with Gemma + Kokoro
+        run: npm run daily:render
+
+      - name: Show generated pack summary
+        run: |
+          node -e "const p=require('./public/generated/latest.json'); console.log({date:p.date,count:p.count,model:p.model,voices:p.scenes.reduce((a,s)=>(a[s.voice]=(a[s.voice]||0)+1,a),{})})"
+          du -sh public/generated || true
+
+      - name: Commit compact novelty history
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- data/history.json; then
+            echo 'History unchanged.'
+            exit 0
+          fi
+          git config user.name 'reset-render-bot'
+          git config user.email 'reset-render-bot@users.noreply.github.com'
+          git add data/history.json
+          git commit -m "chore(reset): update daily novelty history"
+          git push
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload RESET site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: public
+
+      - name: Deploy RESET
+        id: deployment
+        uses: actions/deploy-pages@v4

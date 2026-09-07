@@ -1,0 +1,24 @@
+{
+  "name": "reset-app",
+  "version": "0.5.0",
+  "type": "module",
+  "description": "RESET \u2014 Rendered Elsewhere, Spoken Each Time",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test",
+    "check": "node --check src/server.js && node --check src/appFactory.js && node --check src/generation/openAiCompatibleSceneProvider.js && node --check src/generation/fewShotExamples.js && node --check src/daily/novelty.js && node --check src/daily/historyStore.js && node --check scripts/compileDailyPack.js && node --check scripts/verifyDailyPack.js && node --check public/app.js && node --check public/dailyPack.js && node --check public/audioEngine.js && node --check public/themeEngine.js && node --check public/dockDrivers.js && node --check public/dockBackdrop.js && node --check public/service-worker.js",
+    "tts:smoke": "node scripts/ttsSmoke.js",
+    "daily:compile": "node scripts/compileDailyPack.js",
+    "daily:verify": "node scripts/verifyDailyPack.js",
+    "daily:render": "npm run daily:compile && npm run daily:verify"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "kokoro-js": "^1.2.1"
+  }
+}
