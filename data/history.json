@@ -48,6 +48,53 @@
           "timeEnvelope": "dusk"
         }
       ]
+    },
+    {
+      "date": "2026-09-09",
+      "scenes": [
+        {
+          "id": "2026-09-09-001",
+          "scene": "The engine sputtered, a dry cough followed by a long, silent pause. A man in a dusty orange vest adjusted the radio, the static a low thrum. He checked the fuel gauge, then the diagnostic display – a series of flashing symbols he didn’t recognize. Another man wrestled with the handbrake of the maintenance truck, trying to shift it into gear. Dust motes danced in the afternoon light. A loose stone shifted under his boot. He swore quietly.",
+          "sceneTime": "15:17",
+          "sceneTimeMinutes": 917,
+          "sceneTimeBand": "afternoon",
+          "voice": "af_nicole",
+          "worldCapsuleId": "andes-mountain-road",
+          "creativePressure": [
+            "human activity without introspection",
+            "keep the moment busy rather than tranquil"
+          ],
+          "timeEnvelope": "afternoon"
+        },
+        {
+          "id": "2026-09-09-002",
+          "scene": "The forklift operator shifts gears, avoiding a small puddle of something dark spreading across the concrete. He whistles a tune that’s mostly off-key. A woman in a faded orange uniform is meticulously sorting boxes of machine parts—'S-47, S-47, S-47'—into color-coded plastic bins. Her phone rings, a burst of static, and she answers with a grunt, repeating a phrase about a jammed roller door. A delivery scooter weaves through the narrow lane, kicking up a spray of dust that momentarily obscures the red brake lights of a freighter.",
+          "sceneTime": "05:12",
+          "sceneTimeMinutes": 312,
+          "sceneTimeBand": "dawn",
+          "voice": "af_nicole",
+          "worldCapsuleId": "kaohsiung-industrial-edge",
+          "creativePressure": [
+            "domestic and specific, not sentimental",
+            "mildly funny, but not jokey"
+          ],
+          "timeEnvelope": "dawn"
+        },
+        {
+          "id": "2026-09-09-003",
+          "scene": "The fluorescent lights flicker, cycling through a low hum. Dust motes dance in the beam as the pharmacist, a man in a crumpled shirt, checks the count on the painkiller display. He’s got a smear of something dark across his cheek. The delivery driver is sitting on the curb, watching him, scrolling on his phone. A small, battered scooter idles across the street, its headlight casting a blue pool on the wet pavement. He pulls out a notepad, checks the address again, and sighs.",
+          "sceneTime": "23:17",
+          "sceneTimeMinutes": 1397,
+          "sceneTimeBand": "night",
+          "voice": "am_michael",
+          "worldCapsuleId": "bengaluru-pharmacy",
+          "creativePressure": [
+            "avoid a poetic ending",
+            "something practical has gone slightly wrong"
+          ],
+          "timeEnvelope": "night"
+        }
+      ]
     }
   ]
 }
