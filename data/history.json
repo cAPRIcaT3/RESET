@@ -95,6 +95,53 @@
           "timeEnvelope": "night"
         }
       ]
+    },
+    {
+      "date": "2026-09-10",
+      "scenes": [
+        {
+          "id": "2026-09-10-001",
+          "scene": "The generator sputters, throws a shower of sparks, and dies. He leans against the shed wall, pulls a wrench from his pocket, and assesses the starter motor. Grease smears across his hands. Outside, the clanging of a distant truck bed on gravel is the only sound. He consults a handwritten page, a series of numbers and symbols, then sighs, wipes his hand on his overalls, and begins to disconnect the battery cables.",
+          "sceneTime": "05:47",
+          "sceneTimeMinutes": 347,
+          "sceneTimeBand": "dawn",
+          "voice": "am_michael",
+          "worldCapsuleId": "iowa-family-farm",
+          "creativePressure": [
+            "keep the moment busy rather than tranquil",
+            "no weather description"
+          ],
+          "timeEnvelope": "dawn"
+        },
+        {
+          "id": "2026-09-10-002",
+          "scene": "The rhythmic thump of the roller door closing is the loudest thing. A man in a stained orange vest leans against the frame, checking the cable tension with a small wrench. Across the lane, a scooter swerves to avoid a stack of damp shipping containers and almost clips a forklift. A woman at the worker restaurant gestures with a plastic bowl, yelling to someone to bring her a beer. The metallic tang of saltwater hangs in the air.",
+          "sceneTime": "22:58",
+          "sceneTimeMinutes": 1378,
+          "sceneTimeBand": "night",
+          "voice": "af_nicole",
+          "worldCapsuleId": "kaohsiung-industrial-edge",
+          "creativePressure": [
+            "mildly funny, but not jokey",
+            "avoid a poetic ending"
+          ],
+          "timeEnvelope": "night"
+        },
+        {
+          "id": "2026-09-10-003",
+          "scene": "The chain holding the supply gate stretches taut in the wind. It doesn’t snap, but the constant vibration of the ferry engine seems to hum through the metal, distorting the sound. A single, rusted key rolls slowly across the painted steel deck, pausing momentarily near the engine housing before continuing its journey towards the water’s edge. The golden light catches on the gaps in the steel plating, turning them briefly silver.",
+          "sceneTime": "17:52",
+          "sceneTimeMinutes": 1072,
+          "sceneTimeBand": "golden_hour",
+          "voice": "af_nicole",
+          "worldCapsuleId": "finland-lake-ferry",
+          "creativePressure": [
+            "no people; let a process or object carry the scene",
+            "start close to one detail and widen later"
+          ],
+          "timeEnvelope": "golden-hour"
+        }
+      ]
     }
   ]
 }
