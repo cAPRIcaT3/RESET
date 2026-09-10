@@ -142,6 +142,53 @@
           "timeEnvelope": "golden-hour"
         }
       ]
+    },
+    {
+      "date": "2026-09-11",
+      "scenes": [
+        {
+          "id": "2026-09-11-001",
+          "scene": "The hydraulic pump sputtered, then died. Dust swirled around the mechanic’s boots as he wrestled with the controls, checking the pressure gauge again. He swore under his breath, a short, sharp sound swallowed by the wind. The maintenance truck idled, its engine a low, insistent drone. Through the open door, he could see the sun beginning to dip below the ridges, casting long shadows from the guardrail across the drop. He grabbed a wrench, then stopped, realizing he'd left the toolbox lid open.",
+          "sceneTime": "17:52",
+          "sceneTimeMinutes": 1072,
+          "sceneTimeBand": "golden_hour",
+          "voice": "am_michael",
+          "worldCapsuleId": "andes-mountain-road",
+          "creativePressure": [
+            "begin with action rather than setting",
+            "avoid a poetic ending"
+          ],
+          "timeEnvelope": "golden-hour"
+        },
+        {
+          "id": "2026-09-11-002",
+          "scene": "The deckhand, Elias, is wrestling with the starboard gate, the wind a constant, insistent push. He’s humming something tuneless. The driver, Jukka, pats his pockets, then his console, then his belt. A small, brass key – his own – has vanished. He checks the small stack of crates he’s shifting from the bow. A low, thrumming vibration rises from the engine, momentarily drowning out Elias’s humming. Jukka finds the key wedged between the safety chains. He doesn’t say anything.",
+          "sceneTime": "03:12",
+          "sceneTimeMinutes": 192,
+          "sceneTimeBand": "deep_night",
+          "voice": "af_nicole",
+          "worldCapsuleId": "finland-lake-ferry",
+          "creativePressure": [
+            "mildly funny, but not jokey",
+            "start close to one detail and widen later"
+          ],
+          "timeEnvelope": "deep-night"
+        },
+        {
+          "id": "2026-09-11-003",
+          "scene": "The fluorescent lights hum, a steady drone above the mostly-empty shelves. A woman, in a faded orange pharmacy uniform, stacks returned delivery cartons. She checks the count against a handwritten list, a frown deepening as she notices the discrepancy. A single screw from a broken tube light sits on the counter. The sound of a motorcycle horn briefly interrupts the quiet, followed by a quick exchange of rupees. She pulls out a small toolkit and begins sorting through the screws, humming softly.",
+          "sceneTime": "07:18",
+          "sceneTimeMinutes": 438,
+          "sceneTimeBand": "morning",
+          "voice": "af_nicole",
+          "worldCapsuleId": "bengaluru-pharmacy",
+          "creativePressure": [
+            "domestic and specific, not sentimental",
+            "avoid a poetic ending"
+          ],
+          "timeEnvelope": "morning"
+        }
+      ]
     }
   ]
 }
