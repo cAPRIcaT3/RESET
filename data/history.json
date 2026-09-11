@@ -189,6 +189,53 @@
           "timeEnvelope": "morning"
         }
       ]
+    },
+    {
+      "date": "2026-09-12",
+      "scenes": [
+        {
+          "id": "2026-09-12-001",
+          "scene": "The engine sputters, then dies again. Dust motes hang thick in the rising light, coating the worn tires of the maintenance truck. He checks the fuel line, a smear of grease clinging to his fingers. The guardrail is a jagged line against the grey rock, and the valley yawns far below. He adjusts the radio, static filling the silence, then pulls out a small, dented wrench and examines the signpost – a faded warning about the curve. It’s leaning at an awkward angle.",
+          "sceneTime": "05:17",
+          "sceneTimeMinutes": 317,
+          "sceneTimeBand": "dawn",
+          "voice": "af_nicole",
+          "worldCapsuleId": "andes-mountain-road",
+          "creativePressure": [
+            "avoid a poetic ending",
+            "make infrastructure part of the scene"
+          ],
+          "timeEnvelope": "dawn"
+        },
+        {
+          "id": "2026-09-12-002",
+          "scene": "The ferry’s main engine vibrates through the steel deck, a slow, insistent pulse. A chain rattle, not metallic, but a looped plastic fastening, continues to swing with each rotation. A single, yellow maintenance key rests on the deck, face down, precisely centered between two safety chains. It’s been there for at least thirty minutes. The angle of light on the deck suggests it’s around 15:17.",
+          "sceneTime": "15:17",
+          "sceneTimeMinutes": 917,
+          "sceneTimeBand": "afternoon",
+          "voice": "af_nicole",
+          "worldCapsuleId": "finland-lake-ferry",
+          "creativePressure": [
+            "no people; let a process or object carry the scene",
+            "no weather description"
+          ],
+          "timeEnvelope": "afternoon"
+        },
+        {
+          "id": "2026-09-12-003",
+          "scene": "The cleaning cart sits by the service corridor, blocking the way to the photocopier. Dust motes hang in the shaft of morning light. A single sheet of paper is stuck halfway out of the copier, jammed and unmoving. Outside, a muted roar of trucks drifts in through the high windows. A man in a blue uniform shifts the cart, then checks his phone, scrolling slowly. He pulls out a small, dented wrench.",
+          "sceneTime": "07:18",
+          "sceneTimeMinutes": 438,
+          "sceneTimeBand": "morning",
+          "voice": "af_nicole",
+          "worldCapsuleId": "maputo-office-cleaning",
+          "creativePressure": [
+            "domestic and specific, not sentimental",
+            "make infrastructure part of the scene"
+          ],
+          "timeEnvelope": "morning"
+        }
+      ]
     }
   ]
 }
