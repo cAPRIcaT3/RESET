@@ -236,6 +236,53 @@
           "timeEnvelope": "morning"
         }
       ]
+    },
+    {
+      "date": "2026-09-13",
+      "scenes": [
+        {
+          "id": "2026-09-13-001",
+          "scene": "The air smells of wet cardboard and diesel. He’s sorting through the last of the mango shipments, a layer of bruised fruit at the bottom of the stack. A delivery driver shouts from the loading bay, but he ignores him, stacking the remaining boxes higher. He finds a small, broken plastic comb wedged between two pallets. A single, orange-stained nail remains on its surface. He doesn’t look up.",
+          "sceneTime": "18:57",
+          "sceneTimeMinutes": 1137,
+          "sceneTimeBand": "dusk",
+          "voice": "af_nicole",
+          "worldCapsuleId": "surabaya-warehouse-lane",
+          "creativePressure": [
+            "avoid a poetic ending",
+            "domestic and specific, not sentimental"
+          ],
+          "timeEnvelope": "dusk"
+        },
+        {
+          "id": "2026-09-13-002",
+          "scene": "The automatic door chime clicks off with a muted thud. Dust motes dance in the beam of the overhead light, thickest around the rolling stock count. Each pill bottle is lifted, checked against the manifest, the process slow and deliberate. A small, insistent whirring comes from the back – a tube light struggling with a new bulb. The cardboard delivery cartons stack haphazardly against the pharmacy’s wall. The sounds of the street outside fade.",
+          "sceneTime": "15:43",
+          "sceneTimeMinutes": 943,
+          "sceneTimeBand": "afternoon",
+          "voice": "af_nicole",
+          "worldCapsuleId": "bengaluru-pharmacy",
+          "creativePressure": [
+            "domestic and specific, not sentimental",
+            "no people; let a process or object carry the scene"
+          ],
+          "timeEnvelope": "afternoon"
+        },
+        {
+          "id": "2026-09-13-003",
+          "scene": "The fluorescent light in the shed flickers, casting long shadows across a disassembled combine head. He’s tracing the wires with a multimeter, the clicks and buzzes swallowed by the engine's hum. The smell of diesel and grease hangs thick in the air. Across the bay, the oldest grain bin seems to shift subtly, maybe the wind, maybe something else. She walks in, carrying a plate of warm apple pie, untouched. \"Thought you might need a break,\" she says, setting it down on an upturned crate. He doesn’t look up.",
+          "sceneTime": "21:13",
+          "sceneTimeMinutes": 1273,
+          "sceneTimeBand": "evening",
+          "voice": "af_nicole",
+          "worldCapsuleId": "iowa-family-farm",
+          "creativePressure": [
+            "no weather description",
+            "do not end with silence or a fading sound"
+          ],
+          "timeEnvelope": "evening"
+        }
+      ]
     }
   ]
 }
