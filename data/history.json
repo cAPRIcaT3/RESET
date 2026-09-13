@@ -283,6 +283,53 @@
           "timeEnvelope": "evening"
         }
       ]
+    },
+    {
+      "date": "2026-09-14",
+      "scenes": [
+        {
+          "id": "2026-09-14-001",
+          "scene": "The magnetic strips on the pallets shift with each slow push of the forklift. Dust motes dance in the last streaks of sunlight through the loading bay doors. A single mechanic wipes grease from his hands with a rag that’s already stained dark. He notices a small, bright orange plastic tag – ‘Consigned – Fragile’ – snagged on a loose bolt of a shipping container. He picks it up, examines it briefly, then jams it into his pocket. The air smells of diesel and hot metal.",
+          "sceneTime": "17:47",
+          "sceneTimeMinutes": 1067,
+          "sceneTimeBand": "golden_hour",
+          "voice": "af_nicole",
+          "worldCapsuleId": "kaohsiung-industrial-edge",
+          "creativePressure": [
+            "focus on a small physical process",
+            "start close to one detail and widen later"
+          ],
+          "timeEnvelope": "golden-hour"
+        },
+        {
+          "id": "2026-09-14-002",
+          "scene": "The outboard sputtered, coughed a plume of white smoke, and died. A woman wrestled with the fuel line, the braided rope slick with oil. Beside her, a man adjusted the carburetor, the metal of the tool crate digging into his forearm. Across the small pier, a second boat – a small fishing boat – sits silently, an orange flag snapping in the wind. A small, plastic bucket is pulled out of the water, dripping onto the stone.",
+          "sceneTime": "15:32",
+          "sceneTimeMinutes": 932,
+          "sceneTimeBand": "afternoon",
+          "voice": "af_nicole",
+          "worldCapsuleId": "ohrid-lake-service-pier",
+          "creativePressure": [
+            "make infrastructure part of the scene",
+            "human activity without introspection"
+          ],
+          "timeEnvelope": "afternoon"
+        },
+        {
+          "id": "2026-09-14-003",
+          "scene": "The wind’s pulling at the safety chains, a constant, insistent tug. He drops the toolbox – a small, dented red one – and it skitters across the steel deck. ‘Damn,’ he says, bending to retrieve it, the deck vibrating subtly beneath his feet. The driver, somewhere in the short queue of vehicles, shouts something about the key. He can’t quite hear it over the engine’s deep thrum. It's cold, and the spray from the lake is starting to bead on the railings.",
+          "sceneTime": "07:15",
+          "sceneTimeMinutes": 435,
+          "sceneTimeBand": "morning",
+          "voice": "af_nicole",
+          "worldCapsuleId": "finland-lake-ferry",
+          "creativePressure": [
+            "no explicit location name",
+            "begin with action rather than setting"
+          ],
+          "timeEnvelope": "morning"
+        }
+      ]
     }
   ]
 }
