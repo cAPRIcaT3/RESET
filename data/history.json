@@ -377,6 +377,53 @@
           "timeEnvelope": "golden-hour"
         }
       ]
+    },
+    {
+      "date": "2026-09-16",
+      "scenes": [
+        {
+          "id": "2026-09-16-001",
+          "scene": "The oil slick spreads a little further with each gentle wave. A crate of spark plugs sits half-open on the pier’s edge, tilted precariously. The water reflects the grey concrete, mirroring the stain. A single, frayed rope drags across the stones as it unravels from the boat’s mooring. Someone—or something—shifted the crate a fraction. The salt spray glistens, momentarily obscuring the line.",
+          "sceneTime": "07:42",
+          "sceneTimeMinutes": 462,
+          "sceneTimeBand": "morning",
+          "voice": "af_nicole",
+          "worldCapsuleId": "ohrid-lake-service-pier",
+          "creativePressure": [
+            "keep the moment busy rather than tranquil",
+            "no people; let a process or object carry the scene"
+          ],
+          "timeEnvelope": "morning"
+        },
+        {
+          "id": "2026-09-16-002",
+          "scene": "The ferry deck shimmers under a midday sun. Dust motes dance in the gaps between the steel beams. He’s kneeling, wrestling with the stubborn gate latch, the lake wind pulling at his gloves. The driver, slumped against the engine, pats his pockets, then checks the small, oily key in his palm. A stack of bundled firewood shifts slightly, threatening to spill onto the deck. He doesn't look up.",
+          "sceneTime": "15:32",
+          "sceneTimeMinutes": 932,
+          "sceneTimeBand": "afternoon",
+          "voice": "af_nicole",
+          "worldCapsuleId": "finland-lake-ferry",
+          "creativePressure": [
+            "ordinary work is already underway",
+            "human activity without introspection"
+          ],
+          "timeEnvelope": "afternoon"
+        },
+        {
+          "id": "2026-09-16-003",
+          "scene": "The automatic door chime continues its tinny repeat – *ding, ding, ding* – long after the last customer left. Fluorescent lights hum over rows of medication boxes, each scanned and re-shelved by the inventory system. A small drone, delivering a new tube of ointment, bumps against the metal shutter, triggering a brief, insistent vibration. The vibration runs through the shelving, subtly shifting the position of the antihistamines. A single, perfect drop of water collects on the lens of the camera recording the count.",
+          "sceneTime": "18:53",
+          "sceneTimeMinutes": 1133,
+          "sceneTimeBand": "dusk",
+          "voice": "af_nicole",
+          "worldCapsuleId": "bengaluru-pharmacy",
+          "creativePressure": [
+            "do not end with silence or a fading sound",
+            "no people; let a process or object carry the scene"
+          ],
+          "timeEnvelope": "dusk"
+        }
+      ]
     }
   ]
 }
