@@ -330,6 +330,53 @@
           "timeEnvelope": "morning"
         }
       ]
+    },
+    {
+      "date": "2026-09-15",
+      "scenes": [
+        {
+          "id": "2026-09-15-001",
+          "scene": "The utility cart sits crookedly near the service corridor, one wheel dragging slightly. A cleaning woman is meticulously wiping down a glass partition with a damp cloth, pausing to argue with a maintenance worker over the correct order for emptying the trash bins. He gestures emphatically with a roll of paper towels. Street light spills across the floor, illuminating the dust motes dancing in the silence between them.",
+          "sceneTime": "15:32",
+          "sceneTimeMinutes": 932,
+          "sceneTimeBand": "afternoon",
+          "voice": "af_nicole",
+          "worldCapsuleId": "maputo-office-cleaning",
+          "creativePressure": [
+            "avoid a poetic ending",
+            "mildly funny, but not jokey"
+          ],
+          "timeEnvelope": "afternoon"
+        },
+        {
+          "id": "2026-09-15-002",
+          "scene": "The automatic shutter unit hisses, retracting with a final, strained groan. Dust motes dance in the narrow shaft of light cutting through the pharmacy’s doorway. Several stacked delivery cartons sit in a pile near the counter, their cardboard flaps crumpled. A thin, blue plastic tube – one of a hundred – rolls silently across the concrete floor, propelled by the slight draft. The reflection of the streetlights catches the edges of the pharmacy’s front window.",
+          "sceneTime": "18:53",
+          "sceneTimeMinutes": 1133,
+          "sceneTimeBand": "dusk",
+          "voice": "af_nicole",
+          "worldCapsuleId": "bengaluru-pharmacy",
+          "creativePressure": [
+            "no people; let a process or object carry the scene",
+            "start close to one detail and widen later"
+          ],
+          "timeEnvelope": "dusk"
+        },
+        {
+          "id": "2026-09-15-003",
+          "scene": "Rust flakes from the overhead crane’s cables, drifting slowly towards the concrete floor. The scent of lubricant and damp metal hangs thick in the air. A single, red plastic marker—likely used to flag a mislabeled pallet—lies on its side, reflecting the last streaks of sunlight. The conveyor belt continues its rhythmic grind, a steady pulse against the evening quiet. A distant forklift horn repeats, a lonely sound swallowed by the water towers.",
+          "sceneTime": "17:47",
+          "sceneTimeMinutes": 1067,
+          "sceneTimeBand": "golden_hour",
+          "voice": "af_nicole",
+          "worldCapsuleId": "kaohsiung-industrial-edge",
+          "creativePressure": [
+            "make infrastructure part of the scene",
+            "no people; let a process or object carry the scene"
+          ],
+          "timeEnvelope": "golden-hour"
+        }
+      ]
     }
   ]
 }
