@@ -424,6 +424,53 @@
           "timeEnvelope": "dusk"
         }
       ]
+    },
+    {
+      "date": "2026-09-17",
+      "scenes": [
+        {
+          "id": "2026-09-17-001",
+          "scene": "The outboard won't turn over. He pulls at the starter cord, a quick, jerky motion, and then stops. Water laps at the hull, cold and surprisingly loud. A small crate of spare parts sits open beside him, the contents neatly arranged – a single, bright orange fuel filter, a length of braided hose, a rusty wrench. His daughter is examining the wiring under the console with a flashlight, her brow furrowed. She’s muttering something about loose connections. He just wishes he'd brought the multimeter.",
+          "sceneTime": "07:18",
+          "sceneTimeMinutes": 438,
+          "sceneTimeBand": "morning",
+          "voice": "am_michael",
+          "worldCapsuleId": "ohrid-lake-service-pier",
+          "creativePressure": [
+            "something practical has gone slightly wrong",
+            "domestic and specific, not sentimental"
+          ],
+          "timeEnvelope": "morning"
+        },
+        {
+          "id": "2026-09-17-002",
+          "scene": "The automatic door mechanism clicks shut, a muted thud. Dust motes hang in the slivers of light filtering through the south-facing windows. The cleaning cart – blue, slightly dented – sits awkwardly in the service corridor, its spray bottle tipped over, a trickle of lavender scent clinging to the linoleum. A stack of paper from the stubborn copier is partially obscuring the open-plan desks. The light from the street casts a pale grey wash across the floor.",
+          "sceneTime": "05:17",
+          "sceneTimeMinutes": 317,
+          "sceneTimeBand": "dawn",
+          "voice": "am_michael",
+          "worldCapsuleId": "maputo-office-cleaning",
+          "creativePressure": [
+            "no people; let a process or object carry the scene",
+            "domestic and specific, not sentimental"
+          ],
+          "timeEnvelope": "dawn"
+        },
+        {
+          "id": "2026-09-17-003",
+          "scene": "The deckhand is wrestling with the gate, its metal edges cold under his gloves. He shouts for the driver, who’s searching under the pilot seat for a dropped key – a small, silver one, probably for the engine. The ferry’s engine thrums a steady vibration through the steel, and the lake wind shifts, bringing with it the scent of pine needles. A crate of smoked salmon shifts precariously on a pallet; the driver moves to secure it with rope. He finds the key near a chain.",
+          "sceneTime": "21:13",
+          "sceneTimeMinutes": 1273,
+          "sceneTimeBand": "evening",
+          "voice": "af_nicole",
+          "worldCapsuleId": "finland-lake-ferry",
+          "creativePressure": [
+            "domestic and specific, not sentimental",
+            "keep the moment busy rather than tranquil"
+          ],
+          "timeEnvelope": "evening"
+        }
+      ]
     }
   ]
 }
