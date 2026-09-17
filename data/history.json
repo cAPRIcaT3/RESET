@@ -471,6 +471,53 @@
           "timeEnvelope": "evening"
         }
       ]
+    },
+    {
+      "date": "2026-09-18",
+      "scenes": [
+        {
+          "id": "2026-09-18-001",
+          "scene": "The maintenance truck’s headlights cut through the mist, painting the guardrail in brief flashes. A smear of rust clings to the bottom of the windshield. The mechanic, Mateo, adjusts the radio, static briefly drowning out a tango song. He checks the tire pressure – low. He sighs, pulls a thermos from the dash, and pours himself a cup of coffee, grimacing slightly at the taste. Somewhere further down the road, a rock shifts.",
+          "sceneTime": "05:12",
+          "sceneTimeMinutes": 312,
+          "sceneTimeBand": "dawn",
+          "voice": "af_nicole",
+          "worldCapsuleId": "andes-mountain-road",
+          "creativePressure": [
+            "mildly funny, but not jokey",
+            "start close to one detail and widen later"
+          ],
+          "timeEnvelope": "dawn"
+        },
+        {
+          "id": "2026-09-18-002",
+          "scene": "The deckhand is wrestling with a stubborn gate, pulling at the chain with a grunt. The driver, slumped against the ferry’s railing, pats his pockets repeatedly. A small, silver key – likely his – bounces off the steel deck. He doesn't notice. The engine hums, a low, insistent vibration that makes the metal deck plates shudder. A sudden gust of wind whips across the water, momentarily lifting the safety chains and rattling the stack of plastic crates near the front. He sighs and scans the deck again.",
+          "sceneTime": "18:47",
+          "sceneTimeMinutes": 1127,
+          "sceneTimeBand": "dusk",
+          "voice": "af_nicole",
+          "worldCapsuleId": "finland-lake-ferry",
+          "creativePressure": [
+            "mildly funny, but not jokey",
+            "avoid a poetic ending"
+          ],
+          "timeEnvelope": "dusk"
+        },
+        {
+          "id": "2026-09-18-003",
+          "scene": "The roller door slams shut with a greasy thud. A man in a stained orange vest drops a wrench. It bounces once on the concrete before disappearing into a gap beneath a shipping container. He yells something in Mandarin – a single word – and then turns back to the mounting. A scooter screeches to a halt beside him, the driver gesturing to a stack of partially-unpacked circuit boards. He doesn't wait for an answer. The rain starts, a fine, insistent drizzle.",
+          "sceneTime": "23:41",
+          "sceneTimeMinutes": 1421,
+          "sceneTimeBand": "night",
+          "voice": "af_nicole",
+          "worldCapsuleId": "kaohsiung-industrial-edge",
+          "creativePressure": [
+            "avoid a poetic ending",
+            "begin with action rather than setting"
+          ],
+          "timeEnvelope": "night"
+        }
+      ]
     }
   ]
 }
