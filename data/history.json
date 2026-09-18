@@ -518,6 +518,53 @@
           "timeEnvelope": "night"
         }
       ]
+    },
+    {
+      "date": "2026-09-19",
+      "scenes": [
+        {
+          "id": "2026-09-19-001",
+          "scene": "The oil slick shimmers, catching the early light. He’s kneeling, trying to loosen the corroded ring on the outboard’s throttle. A small wave laps against the hull, spraying salt water onto his gloves. He pulls at the ring with a rusted wrench, the metal screaming against metal. The boatman’s dog, a scruffy terrier, wanders past, sniffing at the crate of spare parts. Someone just put a fresh bucket of fuel down and the dog laps it up.",
+          "sceneTime": "07:12",
+          "sceneTimeMinutes": 432,
+          "sceneTimeBand": "morning",
+          "voice": "af_nicole",
+          "worldCapsuleId": "ohrid-lake-service-pier",
+          "creativePressure": [
+            "do not end with silence or a fading sound",
+            "start close to one detail and widen later"
+          ],
+          "timeEnvelope": "morning"
+        },
+        {
+          "id": "2026-09-19-002",
+          "scene": "The cleaning cart’s wheels grind against the polished floor as it’s pushed sideways, scraping against a partition. A single orange peel drifts across the open space, caught in the weak afternoon sunlight filtering through the windows. One of the cleaners, a man in a blue uniform, doesn’t look up. He’s using a handheld scanner to check the levels of the floor cleaner reservoir, a faint hum accompanying his movements. He stops, tilts the cart, and sets it moving again.",
+          "sceneTime": "15:17",
+          "sceneTimeMinutes": 917,
+          "sceneTimeBand": "afternoon",
+          "voice": "af_nicole",
+          "worldCapsuleId": "maputo-office-cleaning",
+          "creativePressure": [
+            "focus on a small physical process",
+            "keep the moment busy rather than tranquil"
+          ],
+          "timeEnvelope": "afternoon"
+        },
+        {
+          "id": "2026-09-19-003",
+          "scene": "The maintenance truck idles, kicking up dust against the rock face. A mechanic wipes grease from his hands with a rag, then checks the pressure gauge again. He adjusts the radio, static filling the cab. Across the turnout, a guardrail post is missing, exposing a drop of maybe thirty meters. A supervisor stares at the missing piece, then at the fading light. He hasn’t radioed for a replacement.",
+          "sceneTime": "17:42",
+          "sceneTimeMinutes": 1062,
+          "sceneTimeBand": "golden_hour",
+          "voice": "af_nicole",
+          "worldCapsuleId": "andes-mountain-road",
+          "creativePressure": [
+            "start close to one detail and widen later",
+            "avoid a poetic ending"
+          ],
+          "timeEnvelope": "golden-hour"
+        }
+      ]
     }
   ]
 }
