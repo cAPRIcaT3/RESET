@@ -565,6 +565,53 @@
           "timeEnvelope": "golden-hour"
         }
       ]
+    },
+    {
+      "date": "2026-09-20",
+      "scenes": [
+        {
+          "id": "2026-09-20-001",
+          "scene": "The gate clangs shut with a metallic groan, the sound swallowed by the wind. He’s searching the deck, knee-deep in damp tarpaulin, and finds nothing but a scattering of rope and a half-eaten sandwich. The driver, head down, wrestles with the ignition key, a tiny, silver thing lost somewhere in the tangle of the engine’s wiring. The ferry’s vibration hums through the steel, a constant, low thrum. He pulls the sandwich away, wipes his hands on his already soaked jacket.",
+          "sceneTime": "15:32",
+          "sceneTimeMinutes": 932,
+          "sceneTimeBand": "afternoon",
+          "voice": "af_nicole",
+          "worldCapsuleId": "finland-lake-ferry",
+          "creativePressure": [
+            "make infrastructure part of the scene",
+            "begin with action rather than setting"
+          ],
+          "timeEnvelope": "afternoon"
+        },
+        {
+          "id": "2026-09-20-002",
+          "scene": "The rhythmic clang of a metal shutter closing reverberates off the corrugated iron walls. Rain streaks the windows of the worker restaurant across the lane – a thin, horizontal smear against the greasy glass. A forklift operator, shifting gears between delivering a pallet of circuit boards and taking a break, splashes a dark puddle onto the concrete. He doesn't notice the small, damp plastic bag floating away with it. Someone’s chewing gum has already begun to melt and stick to the damp floor.",
+          "sceneTime": "23:17",
+          "sceneTimeMinutes": 1397,
+          "sceneTimeBand": "night",
+          "voice": "af_nicole",
+          "worldCapsuleId": "kaohsiung-industrial-edge",
+          "creativePressure": [
+            "do not end with silence or a fading sound",
+            "start close to one detail and widen later"
+          ],
+          "timeEnvelope": "night"
+        },
+        {
+          "id": "2026-09-20-003",
+          "scene": "The outboard coughs, sputtering blue smoke into the fading light. He checks the fuel line, the impeller, then the air filter—everything appears dry. A small, battered toolbox sits open on a stack of crates, a half-eaten apple resting on the lid. Across the water, someone moves a mooring buoy, the rope unwinding with a rhythmic snap. He adjusts the throttle, the engine finally gaining a steady rhythm. The boat drifts slightly, revealing a glimpse of the steep hills reflected in the darkening lake.",
+          "sceneTime": "17:53",
+          "sceneTimeMinutes": 1073,
+          "sceneTimeBand": "golden_hour",
+          "voice": "af_nicole",
+          "worldCapsuleId": "ohrid-lake-service-pier",
+          "creativePressure": [
+            "keep the moment busy rather than tranquil",
+            "domestic and specific, not sentimental"
+          ],
+          "timeEnvelope": "golden-hour"
+        }
+      ]
     }
   ]
 }
