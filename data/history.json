@@ -612,6 +612,53 @@
           "timeEnvelope": "golden-hour"
         }
       ]
+    },
+    {
+      "date": "2026-09-21",
+      "scenes": [
+        {
+          "id": "2026-09-21-001",
+          "scene": "The tractor’s engine sputtered, coughed, and died again. Sweat plastered Sarah’s hair to her forehead as she wrestled with the distributor cap. Her husband, Ben, wrestled with a greasy wrench. “Damn thing’s got a mind of its own,” he muttered, wiping grime on his jeans. A half-eaten apple sat on a nearby toolbox, slowly molding. Outside, the rooster’s crow was swallowed by the quiet of the farm.",
+          "sceneTime": "07:43",
+          "sceneTimeMinutes": 463,
+          "sceneTimeBand": "morning",
+          "voice": "am_michael",
+          "worldCapsuleId": "iowa-family-farm",
+          "creativePressure": [
+            "mildly funny, but not jokey",
+            "begin with action rather than setting"
+          ],
+          "timeEnvelope": "morning"
+        },
+        {
+          "id": "2026-09-21-002",
+          "scene": "The outboard’s choked again. He pulls the starter cord, a rhythmic, futile motion. Water laps against the pier’s edge, a constant, shallow murmur. The mechanic wipes grease from his hands with a rag, leaving streaks on his already stained overalls. He throws the rag into a crate labeled ‘Lubricants – D4’. The scent hangs thick, a mix of oil and something metallic. A wave pushes against the piling, and the crate shifts. He sets it straight, then tests the starter again – three pulls, and a sputtering cough.",
+          "sceneTime": "22:53",
+          "sceneTimeMinutes": 1373,
+          "sceneTimeBand": "night",
+          "voice": "af_nicole",
+          "worldCapsuleId": "ohrid-lake-service-pier",
+          "creativePressure": [
+            "focus on a small physical process",
+            "do not end with silence or a fading sound"
+          ],
+          "timeEnvelope": "night"
+        },
+        {
+          "id": "2026-09-21-003",
+          "scene": "The cleaning cart is positioned precisely by the service corridor, almost blocking the exit. Dust motes hang in the shafts of light from the street, illuminating a single, half-printed invoice on one of the open-plan desks. A junior is wrestling with the copier, pulling at jammed paper with frustrated, careful movements. Outside, the low hum of a generator is nearly drowned out by the distant wail of a siren. The floor manager is quietly stacking invoices on the cart, scanning the room with a tired gaze.",
+          "sceneTime": "12:37",
+          "sceneTimeMinutes": 757,
+          "sceneTimeBand": "day",
+          "voice": "af_nicole",
+          "worldCapsuleId": "maputo-office-cleaning",
+          "creativePressure": [
+            "avoid a poetic ending",
+            "start close to one detail and widen later"
+          ],
+          "timeEnvelope": "midday"
+        }
+      ]
     }
   ]
 }
