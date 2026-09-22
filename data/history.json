@@ -659,6 +659,53 @@
           "timeEnvelope": "midday"
         }
       ]
+    },
+    {
+      "date": "2026-09-22",
+      "scenes": [
+        {
+          "id": "2026-09-22-001",
+          "scene": "The cleaning guy, José, stacked the utility cart higher with discarded paper than he needed to. He paused, listening to the low hum of the air conditioning before rolling it down the service corridor. The street glow through the east-facing windows painted the glass partitions a bruised orange. Maria, still wrestling with the copier, muttered about needing a fresh toner, but José didn’t respond. Somewhere, a door hissed open and shut, and he kept rolling.",
+          "sceneTime": "07:12",
+          "sceneTimeMinutes": 432,
+          "sceneTimeBand": "morning",
+          "voice": "af_nicole",
+          "worldCapsuleId": "maputo-office-cleaning",
+          "creativePressure": [
+            "ordinary work is already underway",
+            "mildly funny, but not jokey"
+          ],
+          "timeEnvelope": "morning"
+        },
+        {
+          "id": "2026-09-22-002",
+          "scene": "The winch cable unwinds with a slow, insistent squeak. Rust flakes from the drum as it spins. Someone had laid down a length of orange polypropylene rope, now tangled with a discarded coil of stainless steel wire. The morning air smells of pine and damp stone. A single tool crate, half-open, reveals a selection of rusted wrenches and a pair of bolt cutters.",
+          "sceneTime": "05:17",
+          "sceneTimeMinutes": 317,
+          "sceneTimeBand": "dawn",
+          "voice": "af_nicole",
+          "worldCapsuleId": "ohrid-lake-service-pier",
+          "creativePressure": [
+            "no people; let a process or object carry the scene",
+            "begin with action rather than setting"
+          ],
+          "timeEnvelope": "dawn"
+        },
+        {
+          "id": "2026-09-22-003",
+          "scene": "The chain stretches, catches, and then releases with a dull thud. It’s rusty. He measures it with a piece of worn leather, marks the length with a pencil, and then resets it, a slight tightening sound in the rising humidity. Across the yard, a forklift grinds its gears, the sound muffled by the concrete. He checks the oil in the hydraulic pump, the level low. The restaurant across the street already has its last tables set; steam curls from the open door.",
+          "sceneTime": "18:47",
+          "sceneTimeMinutes": 1127,
+          "sceneTimeBand": "dusk",
+          "voice": "af_nicole",
+          "worldCapsuleId": "kaohsiung-industrial-edge",
+          "creativePressure": [
+            "start close to one detail and widen later",
+            "focus on a small physical process"
+          ],
+          "timeEnvelope": "dusk"
+        }
+      ]
     }
   ]
 }
