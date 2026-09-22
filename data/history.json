@@ -706,6 +706,53 @@
           "timeEnvelope": "dusk"
         }
       ]
+    },
+    {
+      "date": "2026-09-23",
+      "scenes": [
+        {
+          "id": "2026-09-23-001",
+          "scene": "The fluorescent tubes hum, a steady, insistent buzz. Dust motes hang thick in the single beam as a man counts pills, each one individually, into a small cardboard box. The box is nearly full. He pauses, wipes a smear of something dark from his hand with a paper towel, then resumes. A delivery driver, two-wheeler parked haphazardly outside, leans against the shutters, scrolling through his phone. The driver doesn't look up, nor does the man. A small, metal shelf rattles with the passing traffic.",
+          "sceneTime": "18:47",
+          "sceneTimeMinutes": 1127,
+          "sceneTimeBand": "dusk",
+          "voice": "af_nicole",
+          "worldCapsuleId": "bengaluru-pharmacy",
+          "creativePressure": [
+            "focus on a small physical process",
+            "no explicit location name"
+          ],
+          "timeEnvelope": "dusk"
+        },
+        {
+          "id": "2026-09-23-002",
+          "scene": "The outboard sputters, then dies completely. A man wrestles with the fuel line, a smear of oily residue darkening his fingers. Another pulls at the mooring rope, attempting to free a small workboat already drifting towards the far shore. The water is impossibly clear, reflecting the afternoon sun, and it’s making the stone of the pier slippery. A dog barks somewhere up on the hill.",
+          "sceneTime": "12:32",
+          "sceneTimeMinutes": 752,
+          "sceneTimeBand": "day",
+          "voice": "af_nicole",
+          "worldCapsuleId": "ohrid-lake-service-pier",
+          "creativePressure": [
+            "human activity without introspection",
+            "do not end with silence or a fading sound"
+          ],
+          "timeEnvelope": "midday"
+        },
+        {
+          "id": "2026-09-23-003",
+          "scene": "The utility cart is jammed against the far wall, wheels spinning uselessly. Dust motes dance in the rectangles of street light slicing through the windows. A cleaning attendant has stacked rags in neat pyramids on a service corridor table. A single, high-pitched whine emanates from the open-plan desks – the copier. It’s stuck mid-page, a crumpled stack of receipts erupting from its output tray. Silence.",
+          "sceneTime": "23:41",
+          "sceneTimeMinutes": 1421,
+          "sceneTimeBand": "night",
+          "voice": "af_nicole",
+          "worldCapsuleId": "maputo-office-cleaning",
+          "creativePressure": [
+            "ordinary work is already underway",
+            "no people; let a process or object carry the scene"
+          ],
+          "timeEnvelope": "night"
+        }
+      ]
     }
   ]
 }
