@@ -753,6 +753,53 @@
           "timeEnvelope": "night"
         }
       ]
+    },
+    {
+      "date": "2026-09-24",
+      "scenes": [
+        {
+          "id": "2026-09-24-001",
+          "scene": "The forklift operator adjusts the tilt, a cascade of corrugated cardboard tumbling to the concrete. He doesn’t look up. Across the lane, a delivery driver shouts, ‘Manifest discrepancy!’ The warehouse manager, a woman in a stained polo shirt, gestures with a clipboard, already halfway down the lane towards a stack of damaged electronics. A young man in a company uniform picks up a dropped wrench and examines it for signs of damage. Rain begins to fall, slicking the grey pavement, reflecting the neon sign of a nearby food stall.",
+          "sceneTime": "19:42",
+          "sceneTimeMinutes": 1182,
+          "sceneTimeBand": "dusk",
+          "voice": "af_nicole",
+          "worldCapsuleId": "surabaya-warehouse-lane",
+          "creativePressure": [
+            "begin with action rather than setting",
+            "ordinary work is already underway"
+          ],
+          "timeEnvelope": "dusk"
+        },
+        {
+          "id": "2026-09-24-002",
+          "scene": "The automatic door closer clicks shut with a mechanical sigh. Dust motes dance in the rectangle of street glow seeping through the far window. The utility cart – mostly empty, save a single, stubborn bottle of window cleaner – sits angled toward the service corridor. It’s been pushed there repeatedly by the cleaning crew, following a loop, before being shoved back again. The reflected orange light hits the cart’s handle at an odd angle, making it look like the handle is sweating.",
+          "sceneTime": "07:45",
+          "sceneTimeMinutes": 465,
+          "sceneTimeBand": "morning",
+          "voice": "af_nicole",
+          "worldCapsuleId": "maputo-office-cleaning",
+          "creativePressure": [
+            "no people; let a process or object carry the scene",
+            "mildly funny, but not jokey"
+          ],
+          "timeEnvelope": "morning"
+        },
+        {
+          "id": "2026-09-24-003",
+          "scene": "The engine sputters again, a wet cough that barely masks the wind. He adjusts the fuel line, checking the connection with a gloved hand. The maintenance truck sits motionless, its headlights cutting through the grey. Across the narrow turnout, a single, rusted guardrail seems to lean slightly. He checks his watch – a small, digital thing – then pulls out a folded map and smooths it out on the dashboard. It's wet.",
+          "sceneTime": "05:12",
+          "sceneTimeMinutes": 312,
+          "sceneTimeBand": "dawn",
+          "voice": "af_nicole",
+          "worldCapsuleId": "andes-mountain-road",
+          "creativePressure": [
+            "avoid a poetic ending",
+            "no explicit location name"
+          ],
+          "timeEnvelope": "dawn"
+        }
+      ]
     }
   ]
 }
