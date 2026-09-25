@@ -800,6 +800,53 @@
           "timeEnvelope": "dawn"
         }
       ]
+    },
+    {
+      "date": "2026-09-25",
+      "scenes": [
+        {
+          "id": "2026-09-25-001",
+          "scene": "The gate slams shut with a clang that vibrates through the deck. He runs a hand along the metal, searching for the key. It's not where he left it. He checks his pockets, the clipboard, then the small toolbox. The driver, perched on the edge of the vehicle queue, watches him with a tight expression. He adjusts the securing chain for the tenth time. The engine hums, a low thrumming that doesn't quite drown out the creak of the steel.",
+          "sceneTime": "15:32",
+          "sceneTimeMinutes": 932,
+          "sceneTimeBand": "afternoon",
+          "voice": "af_nicole",
+          "worldCapsuleId": "finland-lake-ferry",
+          "creativePressure": [
+            "no weather description",
+            "begin with action rather than setting"
+          ],
+          "timeEnvelope": "afternoon"
+        },
+        {
+          "id": "2026-09-25-002",
+          "scene": "The outboard sputters, then dies completely. He pushes it, listening for the familiar hum, but just hears the water lapping against the pilings. The crate labeled ‘spare parts’ sits open, revealing mostly tangled rope and a single, rusty wrench. A woman pulls on a mooring line, struggling against a knot she doesn’t recognize.  She grunts.  The man runs a hand over the engine block, then checks the fuel gauge – empty. He starts to fill it, carefully, slowly.",
+          "sceneTime": "17:41",
+          "sceneTimeMinutes": 1061,
+          "sceneTimeBand": "golden_hour",
+          "voice": "af_nicole",
+          "worldCapsuleId": "ohrid-lake-service-pier",
+          "creativePressure": [
+            "ordinary work is already underway",
+            "no weather description"
+          ],
+          "timeEnvelope": "golden-hour"
+        },
+        {
+          "id": "2026-09-25-003",
+          "scene": "The fluorescent lights hum a steady, insistent drone. A delivery carton slides across the linoleum, stopping abruptly against the metal shutters. Someone – it’s difficult to tell – has taped a note to the shutter: ‘Tube light – replacement.’ A plastic comb, detached from its packaging, rests on a shelf near the counter. The pharmacy’s digital clock displays 21:17. A thin film of dust motes dances in the weak light.",
+          "sceneTime": "21:17",
+          "sceneTimeMinutes": 1277,
+          "sceneTimeBand": "evening",
+          "voice": "af_nicole",
+          "worldCapsuleId": "bengaluru-pharmacy",
+          "creativePressure": [
+            "human activity without introspection",
+            "no people; let a process or object carry the scene"
+          ],
+          "timeEnvelope": "evening"
+        }
+      ]
     }
   ]
 }
