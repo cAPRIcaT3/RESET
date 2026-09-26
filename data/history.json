@@ -894,6 +894,53 @@
           "timeEnvelope": "night"
         }
       ]
+    },
+    {
+      "date": "2026-09-27",
+      "scenes": [
+        {
+          "id": "2026-09-27-001",
+          "scene": "The outboard sputtered twice, then died completely. Dust motes hung thick in the sudden, trapped silence. He laid a hand on the cooling engine block, feeling the vibration fade. A length of grey mooring rope, already knotted too tightly, lay coiled on the pier’s edge, slick with recent rain. He cursed under his breath as the water reflected the fading sky. The toolbox, stacked haphazardly on a crate, shifted slightly as he reached for a wrench – a small avalanche of sockets and pliers spilling onto the stone.",
+          "sceneTime": "12:37",
+          "sceneTimeMinutes": 757,
+          "sceneTimeBand": "day",
+          "voice": "af_nicole",
+          "worldCapsuleId": "ohrid-lake-service-pier",
+          "creativePressure": [
+            "make infrastructure part of the scene",
+            "something practical has gone slightly wrong"
+          ],
+          "timeEnvelope": "midday"
+        },
+        {
+          "id": "2026-09-27-002",
+          "scene": "The rain has stopped, leaving a slick film on the concrete. A forklift operator shifts a stack of cartons, each bearing a faded label for 'dried shrimp'. The movement dislodges a small, dented tin of matches from a nearby pallet. They roll across the lane, pausing momentarily against a drain before being swept into the dark water. A truck’s hydraulic lift groans as it lowers a single, unbroken pallet to the ground. The sound is swallowed by the city’s distant hum.",
+          "sceneTime": "02:53",
+          "sceneTimeMinutes": 173,
+          "sceneTimeBand": "deep_night",
+          "voice": "af_nicole",
+          "worldCapsuleId": "surabaya-warehouse-lane",
+          "creativePressure": [
+            "human activity without introspection",
+            "no people; let a process or object carry the scene"
+          ],
+          "timeEnvelope": "deep-night"
+        },
+        {
+          "id": "2026-09-27-003",
+          "scene": "The rhythmic clang of a crane lifting a container is the loudest sound. Overhead, a tangle of power lines vibrates with the current. A forklift operator, chewing gum, struggles to maneuver a pallet of plastic components through a narrow gap between a shipping container and a wall of corrugated steel. Someone’s yelling about mislabeled tags, but it’s mostly swallowed by the drone of the container ship horns in the distance. A single light spills from a doorway to a worker restaurant across the street.",
+          "sceneTime": "21:13",
+          "sceneTimeMinutes": 1273,
+          "sceneTimeBand": "evening",
+          "voice": "af_nicole",
+          "worldCapsuleId": "kaohsiung-industrial-edge",
+          "creativePressure": [
+            "make infrastructure part of the scene",
+            "ordinary work is already underway"
+          ],
+          "timeEnvelope": "evening"
+        }
+      ]
     }
   ]
 }
