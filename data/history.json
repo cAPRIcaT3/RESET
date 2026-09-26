@@ -847,6 +847,53 @@
           "timeEnvelope": "evening"
         }
       ]
+    },
+    {
+      "date": "2026-09-26",
+      "scenes": [
+        {
+          "id": "2026-09-26-001",
+          "scene": "The whine of a forklift is fading as a man in a faded blue shirt adjusts the angle of a small, portable scanner. Across the yard, a woman in a practical jacket is wrestling with a jammed roller door. Sparks fly intermittently. Another worker, seated at a plastic table outside a nearby restaurant, quietly eats noodles, watching them both. The air smells of metal shavings and something vaguely sweet, like engine oil and fruit. He adds a single, handwritten note to a stack of invoices on the table.",
+          "sceneTime": "17:52",
+          "sceneTimeMinutes": 1072,
+          "sceneTimeBand": "golden_hour",
+          "voice": "af_nicole",
+          "worldCapsuleId": "kaohsiung-industrial-edge",
+          "creativePressure": [
+            "several people, no single protagonist",
+            "no weather description"
+          ],
+          "timeEnvelope": "golden-hour"
+        },
+        {
+          "id": "2026-09-26-002",
+          "scene": "The outboard’s fuel line is kinked, a dark slick spreading on the concrete. He’s trying to straighten it with a rusted pliers, the metal screeching against the plastic. The morning air is cold, tasting of pine and something vaguely oily. Across the pier, his father is wrestling with a tangle of mooring rope, muttering about the wind. A single bluebird circles overhead, undisturbed. The water is impossibly still, reflecting the grey hills.",
+          "sceneTime": "07:12",
+          "sceneTimeMinutes": 432,
+          "sceneTimeBand": "morning",
+          "voice": "af_nicole",
+          "worldCapsuleId": "ohrid-lake-service-pier",
+          "creativePressure": [
+            "start close to one detail and widen later",
+            "something practical has gone slightly wrong"
+          ],
+          "timeEnvelope": "morning"
+        },
+        {
+          "id": "2026-09-26-003",
+          "scene": "The hydraulic fluid is still dripping when he pulls the lever. It’s a slow, viscous stream, pooling on the concrete floor of the shed. He picks up a rag, trying to spread it but only managing to smear the puddle. The air smells faintly of metal and something sweet, like overripe berries. His wife’s voice comes from the open doorway – ‘Dinner’s ready.’ He pauses, tilting his head to listen before starting to mop again.",
+          "sceneTime": "23:47",
+          "sceneTimeMinutes": 1427,
+          "sceneTimeBand": "night",
+          "voice": "af_nicole",
+          "worldCapsuleId": "iowa-family-farm",
+          "creativePressure": [
+            "focus on a small physical process",
+            "mildly funny, but not jokey"
+          ],
+          "timeEnvelope": "night"
+        }
+      ]
     }
   ]
 }
