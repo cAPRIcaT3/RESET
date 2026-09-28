@@ -941,6 +941,53 @@
           "timeEnvelope": "evening"
         }
       ]
+    },
+    {
+      "date": "2026-09-28",
+      "scenes": [
+        {
+          "id": "2026-09-28-001",
+          "scene": "The pharmacist is meticulously stacking expired cough syrup, matching the label to the date with a small magnifying glass. Outside, a motorcycle horn blasts repeatedly, but he doesn’t look up. A delivery driver is already collecting a stack of new medication boxes, balancing them precariously on the back of his scooter. He almost knocks over a display of children’s vitamins. The pharmacist sighs, adjusts his glasses, and begins to rearrange the cough syrup again.",
+          "sceneTime": "17:52",
+          "sceneTimeMinutes": 1072,
+          "sceneTimeBand": "golden_hour",
+          "voice": "af_nicole",
+          "worldCapsuleId": "bengaluru-pharmacy",
+          "creativePressure": [
+            "mildly funny, but not jokey",
+            "no weather description"
+          ],
+          "timeEnvelope": "golden-hour"
+        },
+        {
+          "id": "2026-09-28-002",
+          "scene": "The hydraulic pump sputtered, then died again. He jiggled the hose, expecting a burst, but nothing. Just the steady drip, drip, drip of oil onto the gravel. He pulled out a rag and started mopping, pushing the black liquid into a shallow channel cut by a previous repair. The guardrail felt cold against his back. He checked the sign—a faded warning about the drop—and sighed. The truck’s radio crackled with static.",
+          "sceneTime": "02:57",
+          "sceneTimeMinutes": 177,
+          "sceneTimeBand": "deep_night",
+          "voice": "af_nicole",
+          "worldCapsuleId": "andes-mountain-road",
+          "creativePressure": [
+            "mildly funny, but not jokey",
+            "focus on a small physical process"
+          ],
+          "timeEnvelope": "deep-night"
+        },
+        {
+          "id": "2026-09-28-003",
+          "scene": "The belt of the combine is jammed again. It’s thick with snapped stalks, the air smells of diesel and dry corn. He’s tracing the line of the breaker shoe with a flashlight, the beam bouncing off the metal. The quiet is broken only by the rhythmic thump of the machine’s engine and his own breathing. He checks the oil level; it’s a little low. Then he remembers he needs to update the ledger. He pulls out a tablet, its screen reflecting in the polished metal of the shoe.",
+          "sceneTime": "21:13",
+          "sceneTimeMinutes": 1273,
+          "sceneTimeBand": "evening",
+          "voice": "af_nicole",
+          "worldCapsuleId": "iowa-family-farm",
+          "creativePressure": [
+            "ordinary work is already underway",
+            "start close to one detail and widen later"
+          ],
+          "timeEnvelope": "evening"
+        }
+      ]
     }
   ]
 }
