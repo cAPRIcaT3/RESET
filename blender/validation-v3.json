@@ -1,0 +1,35 @@
+{
+  "source": "blender/kelnas-room-landmarks.blend",
+  "sourceSha256": "dab21d79911acbc28f2b046d24be54b62d19798284aa5f2b3dbef40cb30993ef",
+  "revision": 3,
+  "identical_day_night_geometry": true,
+  "geometry_signature": "3a1b4f3ce2f1e137b6b29953bce40f5250e9df39031896893529b612274fe04b",
+  "air_conditioner_off_stops_leaves": true,
+  "air_conditioner_on_moves_leaves": true,
+  "water_moves_and_closes_loop": true,
+  "ferry_changes_course": true,
+  "wake_follows_ferry": true,
+  "ac_off_stops_pages": true,
+  "open_book_pages_move_with_ac": true,
+  "page_loop_has_no_reset_jump": true,
+  "book_states_match_geometry": true,
+  "individual_apartment_light_works": true,
+  "condensation_requires_humidity_and_ac": true,
+  "ac_off_clears_condensation_beads": true,
+  "rain_falls_and_closes_loop": true,
+  "rain_off_removes_drops_and_impacts": true,
+  "clouds_drift_and_close_loop": true,
+  "vehicles_have_modeled_details": true,
+  "all_new_drivers_valid": true,
+  "checksPassed": 18,
+  "camera_location": [
+    0.0,
+    -6.0,
+    51.95000076293945
+  ],
+  "camera_rotation": [
+    1.4784317016601562,
+    -0.0,
+    0.0
+  ]
+}

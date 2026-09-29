@@ -1,0 +1,29 @@
+{
+  "source": "blender/kelnas-room-v2.blend",
+  "sourceSha256": "77d136853a94340338926a336325df80fd1fbb77a03206e9337d858daf3941cd",
+  "revision": 2,
+  "identical_day_night_geometry": true,
+  "geometry_signature": "50be759716c14bce6ada6381fcb0b2a03f4e2994551aaf21be31f7ba9aa95abd",
+  "air_conditioner_off_stops_leaves": true,
+  "air_conditioner_on_moves_leaves": true,
+  "water_moves_and_closes_loop": true,
+  "ferry_changes_course": true,
+  "wake_follows_ferry": true,
+  "ac_off_stops_pages": true,
+  "open_book_pages_move_with_ac": true,
+  "page_loop_has_no_reset_jump": true,
+  "book_states_match_geometry": true,
+  "individual_apartment_light_works": true,
+  "all_new_drivers_valid": true,
+  "checksPassed": 12,
+  "camera_location": [
+    0.0,
+    -6.0,
+    51.95000076293945
+  ],
+  "camera_rotation": [
+    1.4784317016601562,
+    -0.0,
+    0.0
+  ]
+}

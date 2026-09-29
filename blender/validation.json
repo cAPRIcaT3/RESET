@@ -1,0 +1,17 @@
+{
+  "identical_day_night_geometry": true,
+  "air_conditioner_off_stops_leaves": true,
+  "air_conditioner_on_moves_leaves": true,
+  "geometry_signature": "d0ab1462abc48ba346978dbcd6302529c4a5ba0c96c67117d27756fcab565c4b",
+  "camera_location": [
+    0.0,
+    -6.0,
+    51.95000076293945
+  ],
+  "camera_rotation": [
+    1.4784317016601562,
+    -0.0,
+    0.0
+  ],
+  "render_engine": "CYCLES"
+}

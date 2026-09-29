@@ -1,0 +1,54 @@
+name: Deploy Kelna’s Reset to Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Restore latest prepared moments
+        uses: actions/cache/restore@v4
+        with:
+          path: public/generated
+          key: kelna-pack-deploy-${{ github.run_id }}
+          restore-keys: kelna-pack-
+      - name: Retain only a pack compatible with this app
+        run: node --experimental-strip-types scripts/check-pack-compatibility.ts
+      - run: npm run test:runtime
+      - run: npm run build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

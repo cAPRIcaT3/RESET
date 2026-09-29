@@ -1,24 +1,39 @@
 {
-  "name": "reset-app",
-  "version": "0.6.0",
+  "name": "kelnas-reset",
+  "version": "1.0.0",
+  "private": true,
   "type": "module",
-  "description": "RESET \u2014 Rendered Elsewhere, Spoken Each Time",
-  "main": "src/server.js",
   "scripts": {
-    "start": "node src/server.js",
-    "test": "node --test",
-    "check": "node --check src/server.js && node --check src/appFactory.js && node --check src/generation/openAiCompatibleSceneProvider.js && node --check src/generation/fewShotExamples.js && node --check src/daily/novelty.js && node --check src/daily/historyStore.js && node --check scripts/compileDailyPack.js && node --check scripts/verifyDailyPack.js && node --check public/app.js && node --check public/journal.js && node --check public/dailyPack.js && node --check public/audioEngine.js && node --check public/themeEngine.js && node --check public/dockDrivers.js && node --check public/dockBackdrop.js && node --check public/service-worker.js",
-    "tts:smoke": "node scripts/ttsSmoke.js",
-    "daily:compile": "node scripts/compileDailyPack.js",
-    "daily:verify": "node scripts/verifyDailyPack.js",
-    "daily:render": "npm run daily:compile && npm run daily:verify"
+    "dev": "vite --host 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "build": "npm run typecheck && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "moments:generate": "node --experimental-strip-types scripts/generate-moments.ts",
+    "moments:verify": "node --experimental-strip-types scripts/verify-moments.ts",
+    "moments:render": "npm run moments:generate && npm run moments:verify",
+    "test:runtime": "RESET_RUNTIME_ONLY=1 npm test"
   },
-  "license": "MIT",
   "engines": {
-    "node": ">=18"
+    "node": ">=24"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "kokoro-js": "^1.2.1"
+    "@fontsource/cormorant-garamond": "^5.3.0",
+    "@fontsource/manrope": "^5.3.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@huggingface/transformers": "^3.8.1",
+    "@types/node": "^26.6.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "kokoro-js": "^1.2.1",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.0"
+  },
+  "overrides": {
+    "sharp": "^0.35.4"
   }
 }

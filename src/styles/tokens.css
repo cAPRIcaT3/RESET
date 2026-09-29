@@ -1,0 +1,17 @@
+:root {
+  color-scheme: dark;
+  --bg: #090d0f;
+  --text-primary: #f1eee6;
+  --text-secondary: #bfc3c0;
+  --text-muted: #a0aba9;
+  --glass: rgba(21, 29, 30, .38);
+  --line: rgba(225, 229, 219, .18);
+  --warm: #d9b78b;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Manrope', system-ui, sans-serif;
+  --space-xs: .5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 3rem;
+  --ease-soft: cubic-bezier(.22, .61, .36, 1);
+}
