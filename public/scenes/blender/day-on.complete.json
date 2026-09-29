@@ -1,0 +1,12 @@
+{
+  "file": "day-on.mp4",
+  "engine": "Blender Eevee Next",
+  "width": 1200,
+  "height": 800,
+  "fps": 12,
+  "frames": 384,
+  "durationSeconds": 32,
+  "hour": 9,
+  "airConditioner": true,
+  "bytes": 3110308
+}

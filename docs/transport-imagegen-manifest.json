@@ -1,0 +1,20 @@
+{
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "name": "evening-clean",
+      "path": "public/scenes/room-evening-clean.webp",
+      "prompt": "Use case: precise-object-edit. Edit this exact 1536x1024 architectural scene into a clean animation background plate. Preserve camera, every window mullion, every building, desk, chair, plants, mug, notebook, sky, lighting, color grading and raindrops in their exact original positions. Change ONLY these two tiny things: (1) Remove the small lit passenger ferry on the water around pixels x=395..475, y=458..497, including its reflection and little wake. Fill just that region with matching natural blue rippled water. (2) Remove the bright horizontal passenger train on the elevated rail around pixels x=689..975, y=380..397. Preserve the railway bridge deck and structure underneath, filling only the train with plausible empty railway and the buildings behind it. The scene must contain no passenger ferry and no lit train afterward. Do not alter the geometry or composition; this plate will align precisely with animated separate vehicle layers and window masks. Same output dimensions and same crop. No text, logos, watermark or new objects."
+    },
+    {
+      "name": "ferry-sprite",
+      "path": "public/scenes/ferry.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: transparent sprite for a tiny photoreal distant urban waterfront ferry in an architectural scene. A SINGLE compact two-deck passenger ferry, side view with a little of its top visible from a high-rise window, facing RIGHT, blue-gray and charcoal hull, ivory cabin, restrained warm amber lights in rectangular passenger windows, one thin mast, realistic maritime proportions. This is an ordinary commuter ferry, not a yacht or cruise ship. Exact isolated cutout with real alpha transparency surrounding the ferry, absolutely no backdrop, water, shadow plane, wake, shoreline, text, numbers, logos or watermark. Blue hour directional soft cool light with subtly lit cabin. Photorealistic, not illustrated, no cartoon outlines. Wide horizontal asset, fill the canvas closely with the complete ferry, generous 5% transparent margin, center the object, include its complete silhouette. The visible ferry should have a length-to-height ratio around 4:1. 1536x1024 canvas okay but actual object cropped close and centered; transparent output mandatory."
+    },
+    {
+      "name": "train-sprite",
+      "path": "public/scenes/train.webp",
+      "prompt": "Use case: photorealistic-natural. Asset type: transparent sprite for a small distant passenger train crossing a level elevated railway in a cinematic architecture scene. A SINGLE complete commuter train with 6 connected short carriages viewed exactly side-on, facing RIGHT. Charcoal blue-gray silver body, rows of softly glowing warm cream rectangular passenger windows, subtle dark wheels and understated front cab, very low profile, realistic ordinary contemporary rail design. Complete train long horizontal side silhouette, about 17 times wider than tall, no foreshortening. It will be displayed only 180 px wide, so prioritize clear silhouette and warm little windows. True transparent alpha background, no scenery, track, platform, people, drop shadow, ground, labels, numbers, logos, text or watermark. Soft cool blue hour lighting. Not cyberpunk, not cartoon. Fit whole train centered across canvas with 5% margin each side; preserve true transparency even above and below the long thin vehicle. Output landscape."
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+.scene-viewport, .scene-current, .scene-outgoing, .scene-layer, .scene-grade, .scene-media, .scene-vignette { position: absolute; inset: 0; width: 100%; height: 100%; }
+.scene-viewport { overflow: hidden; background: #15232d; container-type: size; }
+.scene-grade { transition: filter 1600ms var(--ease-soft); }
+.scene-media { object-fit: cover; object-position: center 53%; }
+.poster-plane { position: absolute; width: max(100cqw, 150cqh); height: max(100cqh, 66.666667cqw); left: 50%; top: 53%; transform: translate(-50%, -53%); }
+.poster-plane > .scene-media { object-fit: fill; }
+.transport-layer { position: absolute; inset: 0; pointer-events: none; overflow: hidden; opacity: var(--transport-visibility, 1); }
+.transport-evening { mask-image: linear-gradient(90deg, transparent 0% 6.55%, #000 6.55% 19.7%, transparent 19.7% 21.35%, #000 21.35% 43.45%, transparent 43.45% 44.95%, #000 44.95% 76.55%, transparent 76.55% 78.15%, #000 78.15%); }
+.transport-daylight { mask-image: linear-gradient(90deg, #000 0% 18.45%, transparent 18.45% 19.65%, #000 19.65% 44.8%, transparent 44.8% 46.15%, #000 46.15% 77.5%, transparent 77.5% 78.8%, #000 78.8%); }
+.moving-vehicle { position: absolute; inset: 0; width: 100%; height: 100%; will-change: transform; }
+.vehicle-model { position: relative; }
+.vehicle-sprite { display: block; width: 100%; height: 100%; overflow: hidden; }
+.transport-water { position: absolute; inset: 0; }
+.transport-evening .transport-water { clip-path: polygon(22% 43%, 65.5% 42.5%, 66% 47.5%, 71% 50%, 71% 65%, 51% 61%, 48% 58%, 33% 57%, 31% 54%, 25% 52%); }
+.transport-daylight .transport-water { clip-path: polygon(19% 44%, 97% 44%, 97% 61%, 75% 66%, 49% 72%, 35% 65%, 27% 59%, 19% 52%); }
+.ferry-wake-lines { position: absolute; width: 245%; height: 110%; right: 82%; top: 40%; fill: none; stroke: #c8d8dd; stroke-width: 1.4; opacity: .32; mask-image: linear-gradient(90deg, transparent, #000 35%, #000 88%, transparent); }
+.ferry-wake-lines path:nth-child(2) { opacity: .55; }
+.ferry-wake-lines path:nth-child(3) { opacity: .3; }
+.ferry-ripples { position: absolute; left: -23%; top: 70%; width: 52%; height: 40%; }
+.ferry-ripples i { position: absolute; inset: 0; border: 1px solid #c5d8dd65; border-right-color: transparent; border-radius: 50%; animation: ferry-ripple 9s linear infinite; animation-delay: var(--ripple-delay); }
+.ferry-reflection { position: absolute; top: 97%; left: -2%; width: 98%; height: 50%; opacity: .22; transform: scaleY(-1) skewX(-12deg); filter: blur(.7px); mask-image: repeating-linear-gradient(0deg, #000 0 1px, transparent 2px 3px); }
+.ferry-light-trails { position: absolute; top: 101%; left: 0; width: 92%; height: 125%; mask-image: repeating-linear-gradient(0deg, #0009 0 1px, #000 1px 2px, transparent 2px 4px); }
+.ferry-light-trails i { position: absolute; top: 0; width: 3%; background: linear-gradient(#efc58bb0, #edbf7c66 35%, #e1ba7244 60%, transparent); filter: blur(.5px); animation: reflected-light 2800ms ease-in-out infinite alternate; }
+.train-water-reflection { position: absolute; top: 6.6%; height: 7%; transform: scaleY(-1); opacity: .23; filter: brightness(2.2) blur(1px); mask-image: linear-gradient(0deg, #000, transparent 90%), repeating-linear-gradient(0deg, #000 0 1px, #0007 1px 2px, transparent 2px 4px); mask-composite: intersect; }
+.train-water-reflection .vehicle-sprite { animation: train-reflection-ripple 2800ms ease-in-out infinite alternate; }
+.transport-daylight .ferry-light-trails, .transport-daylight .train-water-reflection { opacity: .055; }
+.transport-daylight .ferry-reflection { opacity: .14; }
+.transport-mock .train-water-reflection { top: 4%; }
+.transport-still *, .transport-paused * { animation-play-state: paused !important; }
+.transport-still .ferry-ripples { display: none; }
+.moving-ferry > .vehicle-model > .vehicle-sprite { filter: brightness(1.4) saturate(1.1); }
+.moving-train > .vehicle-model > .vehicle-sprite { filter: brightness(1.2); }
+@keyframes ferry-ripple { from { transform: translateX(0) scale(.3, .3); opacity: 0; } 12% { opacity: .55; } to { transform: translateX(-180%) scale(2.8, 2); opacity: 0; } }
+@keyframes reflected-light { from { transform: translateX(-.7px) scaleX(.7); opacity: .55; } to { transform: translateX(.7px) scaleX(1.35); opacity: 1; } }
+@keyframes train-reflection-ripple { from { transform: skewX(-5deg) translateX(-.8px); } to { transform: skewX(5deg) translateX(.8px); } }
+.scene-current { z-index: 0; }
+.scene-outgoing { z-index: 1; pointer-events: none; animation: scene-leave 1600ms var(--ease-soft) both; }
+.scene-video { opacity: 0; transition: opacity 1200ms; }
+.scene-video.is-ready { opacity: 1; }
+.scene-layer[data-time="late_night"] .scene-grade { filter: brightness(.48) saturate(.7) hue-rotate(3deg); }
+.scene-layer[data-time="evening"] .scene-grade { filter: brightness(.72) saturate(.72); }
+.scene-layer[data-time="sunset"] .scene-grade { filter: brightness(.86) saturate(.76) sepia(.08); }
+.scene-layer[data-time="dawn"] .scene-grade { filter: brightness(.65) saturate(.55) sepia(.1); }
+.scene-layer[data-time="morning"] .scene-grade { filter: brightness(.85) saturate(.63); }
+.scene-layer[data-time="afternoon"] .scene-grade { filter: brightness(.96) saturate(.73); }
+.scene-vignette { z-index: 3; pointer-events: none; background: linear-gradient(180deg, rgba(5, 13, 17, .58) 0%, rgba(7, 13, 16, .03) 22%, rgba(7, 13, 16, .02) 39%, rgba(7, 14, 15, .67) 68%, #0b1415f2 100%), linear-gradient(90deg, #07101352, transparent 65%); transition: opacity 1600ms; }
+.time-tint, .room-warmth, .room-light, .rain-layer, .fog-layer, .grain-layer, .water-shimmer { position: absolute; inset: 0; pointer-events: none; transition: opacity 1600ms; }
+.time-tint { background: transparent; }
+[data-time="sunset"] .time-tint { background: linear-gradient(180deg, #a3634820, transparent 65%); mix-blend-mode: screen; }
+[data-time="dawn"] .time-tint { background: linear-gradient(180deg, #8780aa28, transparent 65%); mix-blend-mode: screen; }
+[data-weather="sunshine"] .time-tint { background: linear-gradient(125deg, transparent 20%, #f7dba62e 55%, transparent 65%); mix-blend-mode: screen; }
+.room-warmth { background: radial-gradient(ellipse at 92% 74%, #de9a4777, #af6f2522 20%, transparent 43%); mix-blend-mode: screen; opacity: var(--lamp-opacity); }
+.room-light { background: linear-gradient(0deg, #b8894d90, transparent 85%); mix-blend-mode: screen; opacity: var(--main-light-opacity); }
+.fog-layer { background: linear-gradient(0deg, transparent 20%, #c0d2d34a 46%, #b8cad4a1 63%, transparent 88%); filter: blur(20px); opacity: var(--fog-opacity); }
+.rain-layer { inset: -20%; background-image: repeating-linear-gradient(102deg, transparent 0, transparent 89px, #d6e5e738 90px, transparent 91px, transparent 151px); background-size: 197px 133px; mask-image: linear-gradient(0deg, transparent 15%, black 50%, black 85%, transparent); opacity: var(--rain-opacity); animation: rain-fall 1700ms linear infinite; }
+.grain-layer { opacity: .045; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 150 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23fff' filter='url(%23n)' opacity='.8' d='M0 0h150v150H0z'/%3E%3C/svg%3E"); }
+.water-shimmer { top: 47%; bottom: 30%; left: 43%; right: 15%; background: repeating-linear-gradient(90deg, transparent 0, transparent 40px, #e7c29542 45px, transparent 49px); filter: blur(13px); opacity: var(--reflection-opacity); animation: water-breathe 8s ease-in-out infinite alternate; mix-blend-mode: screen; }
+@keyframes scene-leave { from { opacity: 1; } to { opacity: 0; } }
+@keyframes rain-fall { from { transform: translate(0, -30px); } to { transform: translate(-28px, 103px); } }
+@keyframes water-breathe { to { transform: scaleX(1.045); opacity: calc(var(--reflection-opacity) * .65); } }
+.mock-scene { position: absolute; inset: 0; overflow: hidden; background: #162630; }
+.mock-sky { position: absolute; inset: 0; background: linear-gradient(#182a36, #637584 55%, #344957); }
+[data-time="afternoon"] .mock-sky, [data-time="morning"] .mock-sky { background: linear-gradient(#657d8e, #adc0c6 55%, #556971); }
+.mock-skyline { position: absolute; left: 0; right: 0; height: 56%; bottom: 40%; }
+.mock-building { position: absolute; bottom: 0; background: #17232c; border-top: 2px solid #526370; box-shadow: inset 3px 0 0 #35424c; }
+.mock-building::after { content: ''; position: absolute; inset: 8px 5px 0; opacity: calc(.1 + var(--city-lights) * .9); background: repeating-linear-gradient(0deg, transparent 0 7px, #15252c 7px 12px), repeating-linear-gradient(90deg, transparent 0 5px, #d7bd83 5px 8px, transparent 8px 17px); background-position: var(--offset) var(--offset); }
+.mock-water { position: absolute; inset: 60% 0 16%; background: linear-gradient(#3f586751, #0a1c2b), repeating-linear-gradient(90deg, #c2996130 0 3px, transparent 5px 38px); }
+.mock-rail { position: absolute; left: 5%; right: 5%; top: 59.5%; height: 3px; background: #243039; border-top: 1px solid #727f81; }
+.mock-dock { position: absolute; top: 65%; right: 2%; height: 3px; width: 33%; transform: rotate(-3deg); background: #1d2a2e; }
+.mock-dock[data-lit="true"] { box-shadow: 0 3px 8px #dfa869; background: repeating-linear-gradient(90deg, #e3b678 0 3px, transparent 3px 38px); }
+.mock-window { position: absolute; inset: 0 5% 18%; border: 14px solid #080f12; border-top-width: 20px; background: linear-gradient(90deg, transparent 31%, #0b1317 31% 32%, transparent 32% 65%, #0b1317 65% 66%, transparent 66%); box-shadow: inset 0 0 0 1px #8a999b40, 0 15px 35px #000; }
+.mock-sill { position: absolute; bottom: 10%; left: 0; right: 0; height: 10%; background: #131819; transform: skewY(2deg); }
+.mock-desk { position: absolute; width: 44%; height: 8%; right: -3%; bottom: 17%; background: #403126; transform: skewY(7deg); border-bottom: 15px solid #1e1a18; box-shadow: 0 30px 30px #060a0c; }
+.mock-lamp { position: absolute; bottom: 100%; right: 22%; width: 4px; height: 90px; background: #171918; }
+.mock-lamp::before { content: ''; position: absolute; width: 58px; height: 25px; left: -26px; top: 0; background: #222822; border-radius: 50% 50% 3px 3px; }
+.mock-lamp[data-on="true"]::before { box-shadow: 0 15px 24px #ffc374a6; border-bottom: 2px solid #e4c892; }
+.mock-notebook { position: absolute; bottom: 100%; right: 43%; width: 70px; height: 13px; background: #232b2c; border-bottom: 3px solid #8c8f7b; transform: skewX(25deg); }
+.mock-notebook[data-open="true"] { width: 105px; background: linear-gradient(90deg, #c0bca3 49%, #6a6755 50%, #c0bca3 51%); }
+.mock-mug { position: absolute; bottom: 100%; right: 70%; width: 22px; height: 25px; background: #9e9e87; border-radius: 3px 3px 8px 8px; }
+.mock-mug::after { content: ''; position: absolute; right: -9px; top: 4px; width: 8px; height: 12px; border: 2px solid #9e9e87; border-radius: 50%; }
+.mock-chair { position: absolute; right: 25%; bottom: -5%; width: 16%; height: 24%; background: #171e20; border-radius: 22% 22% 0 0; transform: rotate(-8deg); border: 6px solid #332d23; }
+.chair-tucked { right: 17%; bottom: -10%; } .chair-pulled_back { right: 31%; }
+.mock-presence { position: absolute; bottom: -10%; left: -4%; width: 15%; height: 24%; border-radius: 60% 60% 0 0; background: #11181a; filter: blur(6px); }
+.mock-curtain { position: absolute; inset: 0 auto 15% 0; width: 3%; background: repeating-linear-gradient(90deg, #1c2529 0 10px, #111b20 20px, #1c2529 35px); transition: width 1500ms; }
+.curtain-half_open { width: 18%; } .curtain-mostly_closed { width: 38%; }
+@media (max-width: 600px) {
+  .scene-media { object-position: 61% 50%; }
+  .poster-plane { left: 61%; top: 50%; transform: translate(-61%, -50%); }
+  .scene-vignette { background: linear-gradient(180deg, #0914185c, transparent 20%, #08121505 30%, #0a141673 49%, #0b1516ed 75%, #0b1516 100%); }
+  .room-warmth { background: radial-gradient(ellipse at 95% 65%, #de9a4750, transparent 45%); }
+  .mock-desk { width: 65%; right: -10%; bottom: 28%; }
+}
+@media (prefers-reduced-motion: reduce) { .rain-layer, .water-shimmer { display: none; } .moving-vehicle { will-change: auto; } }
+@media (prefers-reduced-transparency: reduce) { .grain-layer { display: none; } }
+
+/* The Blender camera plane owns all scenery and motion. No photographic or CSS scene layers. */
+.blender-pass, .blender-daylight { position: absolute; inset: 0; }
+.blender-pass .scene-media { object-fit: fill; }
+.blender-video { opacity: 0; }
+.blender-video.is-ready { opacity: 1; }
+.blender-daylight { pointer-events: none; }

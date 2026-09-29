@@ -1,0 +1,13 @@
+{
+  "file": "night-on.mp4",
+  "engine": "Blender Eevee Next",
+  "width": 1200,
+  "height": 800,
+  "fps": 12,
+  "frames": 384,
+  "durationSeconds": 32,
+  "hour": 21,
+  "airConditioner": true,
+  "elapsedSeconds": 377,
+  "bytes": 4406631
+}

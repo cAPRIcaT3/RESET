@@ -1,10 +1,12 @@
 node_modules/
+dist/
 .env
 .env.*
 !.env.example
 .DS_Store
-npm-debug.log*
-coverage/
-tmp/
+.sites-runtime/
+test-results/
+
+handoff/
 public/generated/*
-!public/generated/.gitkeep
+!public/generated/README.md

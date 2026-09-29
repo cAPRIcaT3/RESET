@@ -1,0 +1,40 @@
+{
+  "source": "blender/kelnas-room-clustered-city.blend",
+  "sourceSha256": "9c13b29a3b0774bdd83c5437015d4bdce5c3d1f678bfeabc1eb3e7049054d855",
+  "revision": 4,
+  "identical_day_night_geometry": true,
+  "geometry_signature": "10bb2411078b64b63e73448a1d13eb647cf757357744b6dc397ad4f9fc1e3746",
+  "air_conditioner_off_stops_leaves": true,
+  "air_conditioner_on_moves_leaves": true,
+  "water_moves_and_closes_loop": true,
+  "ferry_changes_course": true,
+  "wake_follows_ferry": true,
+  "ac_off_stops_pages": true,
+  "open_book_pages_move_with_ac": true,
+  "page_loop_has_no_reset_jump": true,
+  "book_states_match_geometry": true,
+  "individual_apartment_light_works": true,
+  "condensation_requires_humidity_and_ac": true,
+  "ac_off_clears_condensation_beads": true,
+  "rain_falls_and_closes_loop": true,
+  "rain_off_removes_drops_and_impacts": true,
+  "clouds_drift_and_close_loop": true,
+  "vehicles_have_modeled_details": true,
+  "city_lights_off_before_5pm": true,
+  "city_lights_have_staggered_starts": true,
+  "city_lights_brighten_gradually": true,
+  "streetlights_are_actual_scheduled_lights": true,
+  "roads_and_deep_skyline_are_modeled": true,
+  "all_new_drivers_valid": true,
+  "checksPassed": 23,
+  "camera_location": [
+    0.0,
+    -6.0,
+    51.95000076293945
+  ],
+  "camera_rotation": [
+    1.4784317016601562,
+    -0.0,
+    0.0
+  ]
+}
