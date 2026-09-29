@@ -988,6 +988,53 @@
           "timeEnvelope": "evening"
         }
       ]
+    },
+    {
+      "date": "2026-09-29",
+      "scenes": [
+        {
+          "id": "2026-09-29-001",
+          "scene": "The forklift operator adjusts the tilt on the loading bay, a rhythmic grinding sound accompanying each small shift. He glances at the security camera, then back at the conveyor belt piled with grey metal components. A lone mechanic shouts from the open doorway of a repair shop - ‘Almost got it!’ - followed by the impatient honk of a scooter weaving through the narrow access road. The smell of oiled steel and soy sauce drifts from the nearby worker restaurant.",
+          "sceneTime": "19:43",
+          "sceneTimeMinutes": 1183,
+          "sceneTimeBand": "dusk",
+          "voice": "af_nicole",
+          "worldCapsuleId": "kaohsiung-industrial-edge",
+          "creativePressure": [
+            "begin with action rather than setting",
+            "keep the moment busy rather than tranquil"
+          ],
+          "timeEnvelope": "dusk"
+        },
+        {
+          "id": "2026-09-29-002",
+          "scene": "The cleaning lady pushes the utility cart—mostly empty—down the service corridor, dodging a half-folded map spread across one of the open-plan desks. She sighs, adjusts her cap, and gives the stubborn copier a final, forceful shove. It jams again. A single fluorescent light flickers erratically. Across the floor, a junior technician, hunched over his computer, scrubs at a smear on the glass partition with a damp cloth, completely oblivious. He mutters something about “aggressive spreadsheets.”",
+          "sceneTime": "05:47",
+          "sceneTimeMinutes": 347,
+          "sceneTimeBand": "dawn",
+          "voice": "af_nicole",
+          "worldCapsuleId": "maputo-office-cleaning",
+          "creativePressure": [
+            "keep the moment busy rather than tranquil",
+            "mildly funny, but not jokey"
+          ],
+          "timeEnvelope": "dawn"
+        },
+        {
+          "id": "2026-09-29-003",
+          "scene": "The forklift operator slams the horn, a short, insistent beep. He gestures with a greasy hand toward a stack of cartons that’s shifted slightly. Another man, sweating, wrestles with a manifest, muttering in Bahasa Jawa. A delivery truck’s back doors swing open and a driver throws a bag of rice onto the concrete floor. No one acknowledges it. The forklift operator starts moving again, pushing the damaged cartons toward the drain. A brief, frustrated shout breaks the rhythm, then silence.",
+          "sceneTime": "15:17",
+          "sceneTimeMinutes": 917,
+          "sceneTimeBand": "afternoon",
+          "voice": "af_nicole",
+          "worldCapsuleId": "surabaya-warehouse-lane",
+          "creativePressure": [
+            "no weather description",
+            "begin with action rather than setting"
+          ],
+          "timeEnvelope": "afternoon"
+        }
+      ]
     }
   ]
 }
